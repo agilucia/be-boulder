@@ -15,6 +15,7 @@
     "dotenv-cli": "^7.0.0",
     "dotenv-safe": "^8.2.0",
     "leaflet": "^1.9.3",
+    "leaflet-defaulticon-compatibility": "^0.1.1",
     "ley": "^0.8.1",
     "next": "13.2.1",
     "patch-package": "^6.5.1",

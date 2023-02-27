@@ -1,4 +1,5 @@
 import '../../global.scss';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getLocation } from '../../../database/locations';
 import { locationNotFoundMetadata } from './not-found';
@@ -37,6 +38,16 @@ export default async function LocationPage(props: Props) {
       <div>
         <h1>{singleLocation.name}</h1>
         <p>{singleLocation.description}</p>
+        <div>
+          Address: {singleLocation.address}
+          <br />
+          Opening hours: {singleLocation.openingHours}
+          <br />
+          {singleLocation.price}
+          <br />
+          Got to their website:{' '}
+          <a href={singleLocation.website}>{singleLocation.website}</a>
+        </div>
       </div>
     </main>
   );

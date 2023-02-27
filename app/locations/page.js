@@ -1,7 +1,7 @@
 import '../global.scss';
 import Link from 'next/link';
 import { getLocations } from '../../database/locations';
-import Map from '../components/Map';
+import Map from './map';
 import styles from './page.module.scss';
 
 export const dynamic = 'force-dynamic';
@@ -17,7 +17,7 @@ export default async function Locations() {
     <main className={styles.main}>
       <h1>BE BOULDER</h1>
       <div className={styles.map_container}>
-        <Map />
+        <Map locations={locations} />
       </div>
       <div>
         <span>
@@ -26,6 +26,7 @@ export default async function Locations() {
               <div key={`location-${location.id}`}>
                 <Link href={`/locations/${location.id}`}>
                   <h3>{location.name}</h3>
+                  <div>{location.openingHours}</div>
                 </Link>
               </div>
             );
