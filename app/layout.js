@@ -20,6 +20,8 @@ export default function RootLayout({ children }) {
                 <Link href="/">Home</Link>
                 <Link href="/locations">Map</Link>
                 <Link href="/profile">Profile</Link>
+                <Link href="/register">register</Link>
+                <Link href="/login">login</Link>
               </div>
             </div>
           </nav>

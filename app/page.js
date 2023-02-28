@@ -10,7 +10,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
-      <h1 className="text-xs text-red-100">BE BOULDER</h1>
+      <h1 className="text-xl text-red-600">BE BOULDER</h1>
       <Link href="/locations">
         Discover the best bouldering locations in Austria!
       </Link>
