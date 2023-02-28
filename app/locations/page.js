@@ -1,8 +1,7 @@
-import '../global.scss';
+import Image from 'next/image';
 import Link from 'next/link';
 import { getLocations } from '../../database/locations';
-import Map from './map';
-import styles from './page.module.scss';
+import Map from './Map';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,9 +13,9 @@ export const metadata = {
 export default async function Locations() {
   const locations = await getLocations();
   return (
-    <main className={styles.main}>
+    <main>
       <h1>BE BOULDER</h1>
-      <div className={styles.map_container}>
+      <div>
         <Map locations={locations} />
       </div>
       <div>
@@ -27,6 +26,12 @@ export default async function Locations() {
                 <Link href={`/locations/${location.id}`}>
                   <h3>{location.name}</h3>
                   <div>{location.openingHours}</div>
+                  <Image
+                    src={`/images/${location.id}.jpg`}
+                    alt={location.name}
+                    width="200"
+                    height="200"
+                  />
                 </Link>
               </div>
             );

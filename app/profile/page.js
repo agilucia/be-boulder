@@ -1,5 +1,3 @@
-import '../global.scss';
-
 export const dynamic = 'force-dynamic';
 
 export const metadata = {

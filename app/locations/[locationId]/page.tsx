@@ -1,5 +1,5 @@
-import '../../global.scss';
-import Link from 'next/link';
+import Image from 'next/image';
+// import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getLocation } from '../../../database/locations';
 import { locationNotFoundMetadata } from './not-found';
@@ -37,6 +37,12 @@ export default async function LocationPage(props: Props) {
     <main>
       <div>
         <h1>{singleLocation.name}</h1>
+        <Image
+          src={`/images/${singleLocation.id}.jpg`}
+          alt={singleLocation.name}
+          width="200"
+          height="200"
+        />
         <p>{singleLocation.description}</p>
         <div>
           Address: {singleLocation.address}

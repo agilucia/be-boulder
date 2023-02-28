@@ -1,6 +1,4 @@
-import './global.scss';
 import Link from 'next/link';
-import styles from './page.module.scss';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,8 +9,8 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <h1>BE BOULDER</h1>
+    <main>
+      <h1 className="text-xs text-red-100">BE BOULDER</h1>
       <Link href="/locations">
         Discover the best bouldering locations in Austria!
       </Link>
