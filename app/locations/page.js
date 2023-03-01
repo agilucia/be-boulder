@@ -18,20 +18,24 @@ export default async function Locations() {
       <div>
         <Map locations={locations} />
       </div>
-      <div>
+      <div className="card w-96 bg-base-100 shadow-xl">
         <span>
           {locations.map((location) => {
             return (
               <div key={`location-${location.id}`}>
                 <Link href={`/locations/${location.id}`}>
-                  <h3>{location.name}</h3>
-                  <div>{location.openingHours}</div>
-                  <Image
-                    src={`/images/${location.id}.jpg`}
-                    alt={location.name}
-                    width="200"
-                    height="200"
-                  />
+                  <figure>
+                    <Image
+                      src={`/images/${location.id}.jpg`}
+                      alt={location.name}
+                      width="200"
+                      height="200"
+                    />
+                  </figure>
+                  <div className="card-body">
+                    <h3 className="card-title">{location.name}</h3>
+                    <p>{location.openingHours}</p>
+                  </div>
                 </Link>
               </div>
             );

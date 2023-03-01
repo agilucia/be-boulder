@@ -13,6 +13,7 @@
   "dependencies": {
     "@types/dotenv-safe": "^8.1.2",
     "bcrypt": "^5.1.0",
+    "daisyui": "^2.51.2",
     "dotenv-cli": "^7.0.0",
     "dotenv-safe": "^8.2.0",
     "leaflet": "^1.9.3",

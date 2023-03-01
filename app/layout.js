@@ -16,12 +16,34 @@ export default function RootLayout({ children }) {
         <header>
           <nav>
             <div>
-              <div>
-                <Link href="/">Home</Link>
-                <Link href="/locations">Map</Link>
-                <Link href="/profile">Profile</Link>
-                <Link href="/register">register</Link>
-                <Link href="/login">login</Link>
+              <div className="navbar bg-base-100">
+                <Link href="/" className="btn btn-ghost normal-case text-xl">
+                  Home
+                </Link>
+                <Link
+                  href="/locations"
+                  className="btn btn-ghost normal-case text-xl"
+                >
+                  Map
+                </Link>
+                <Link
+                  href="/profile"
+                  className="btn btn-ghost normal-case text-xl"
+                >
+                  Profile
+                </Link>
+                <Link
+                  href="/register"
+                  className="btn btn-ghost normal-case text-xl"
+                >
+                  register
+                </Link>
+                <Link
+                  href="/login"
+                  className="btn btn-ghost normal-case text-xl"
+                >
+                  login
+                </Link>
               </div>
             </div>
           </nav>

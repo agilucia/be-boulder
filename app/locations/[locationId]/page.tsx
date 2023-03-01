@@ -35,24 +35,28 @@ export default async function LocationPage(props: Props) {
 
   return (
     <main>
-      <div>
-        <h1>{singleLocation.name}</h1>
-        <Image
-          src={`/images/${singleLocation.id}.jpg`}
-          alt={singleLocation.name}
-          width="200"
-          height="200"
-        />
-        <p>{singleLocation.description}</p>
-        <div>
-          Address: {singleLocation.address}
-          <br />
-          Opening hours: {singleLocation.openingHours}
-          <br />
-          {singleLocation.price}
-          <br />
-          Got to their website:{' '}
-          <a href={singleLocation.website}>{singleLocation.website}</a>
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <figure>
+          <Image
+            src={`/images/${singleLocation.id}.jpg`}
+            alt={singleLocation.name}
+            width="200"
+            height="200"
+          />
+        </figure>
+        <div className="card-body">
+          <h1 className="card-title">{singleLocation.name}</h1>
+          <p>{singleLocation.description}</p>
+          <div>
+            <b>Address:</b> {singleLocation.address}
+            <br />
+            <b>Opening hours:</b> {singleLocation.openingHours}
+            <br />
+            {singleLocation.price}
+            <br />
+            <b>Got to their website:</b>{' '}
+            <a href={singleLocation.website}>{singleLocation.website}</a>
+          </div>
         </div>
       </div>
     </main>
