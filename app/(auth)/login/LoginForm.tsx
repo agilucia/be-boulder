@@ -37,6 +37,7 @@ export default function LoginForm(props: { returnTo?: string | string[] }) {
           return;
         }
 
+        // router.replace tells me where it's going to be redirected to
         router.replace(`/profile/${data.user.username}`);
         router.refresh();
       }}

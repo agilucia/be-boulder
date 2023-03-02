@@ -55,7 +55,11 @@ export default async function RootLayout(props: Props) {
                   login
                 </Link>
                 {/* we want to disable prefetch for logout link */}
-                <Link href="/logout" prefetch={false}>
+                <Link
+                  className="btn btn-ghost normal-case text-lg"
+                  href="/logout"
+                  prefetch={false}
+                >
                   logout
                 </Link>
                 {user && user.username}
