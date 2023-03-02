@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main>
+    <main className="text-center">
       <h1 className="text-xl text-red-600">BE BOULDER</h1>
       <Link href="/locations">
         Discover the best bouldering locations in Austria!

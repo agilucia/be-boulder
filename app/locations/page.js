@@ -13,7 +13,7 @@ export const metadata = {
 export default async function Locations() {
   const locations = await getLocations();
   return (
-    <main>
+    <main className="flex flex-col items-center">
       <h1>BE BOULDER</h1>
       <div>
         <Map locations={locations} />
@@ -24,15 +24,16 @@ export default async function Locations() {
             return (
               <div key={`location-${location.id}`}>
                 <Link href={`/locations/${location.id}`}>
-                  <figure>
+                  <figure className="px-10 pt-10">
                     <Image
+                      className="py-2"
                       src={`/images/${location.id}.jpg`}
                       alt={location.name}
                       width="200"
                       height="200"
                     />
                   </figure>
-                  <div className="card-body">
+                  <div className="card-body items-center text-center">
                     <h3 className="card-title">{location.name}</h3>
                     <p>{location.openingHours}</p>
                   </div>

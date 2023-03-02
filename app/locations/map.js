@@ -7,6 +7,8 @@ import { Marker, Popup } from 'react-leaflet';
 import { MapContainer } from 'react-leaflet/MapContainer';
 import { TileLayer } from 'react-leaflet/TileLayer';
 
+export const dynamic = 'force-dynamic';
+
 // import { getLocation } from '../../../database/locations';
 // import styles from './page.module.scss';
 
@@ -18,6 +20,7 @@ export default function Map(props) {
       zoom={7}
       scrollWheelZoom={true}
       style={{ height: 400, width: 400 }}
+      // className="height: 100% width: 20rem"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright"'

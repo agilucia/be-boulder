@@ -2,6 +2,7 @@ import Image from 'next/image';
 // import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getLocation } from '../../../database/locations';
+import CommentForm from './CommentForm';
 import { locationNotFoundMetadata } from './not-found';
 
 export const dynamic = 'force-dynamic';
@@ -34,7 +35,7 @@ export default async function LocationPage(props: Props) {
   }
 
   return (
-    <main>
+    <main className="flex flex-col items-center">
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
           <Image
@@ -42,6 +43,7 @@ export default async function LocationPage(props: Props) {
             alt={singleLocation.name}
             width="200"
             height="200"
+            className="py-5"
           />
         </figure>
         <div className="card-body">
@@ -57,6 +59,7 @@ export default async function LocationPage(props: Props) {
             <b>Got to their website:</b>{' '}
             <a href={singleLocation.website}>{singleLocation.website}</a>
           </div>
+          <CommentForm />
         </div>
       </div>
     </main>
