@@ -1,6 +1,7 @@
 import Image from 'next/image';
 // import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { getComments } from '../../../database/comments';
 import { getLocation } from '../../../database/locations';
 import CommentForm from './CommentForm';
 import { locationNotFoundMetadata } from './not-found';
@@ -34,6 +35,8 @@ export default async function LocationPage(props: Props) {
     notFound();
   }
 
+  const comments = await getComments();
+
   return (
     <main className="flex flex-col items-center">
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -59,7 +62,8 @@ export default async function LocationPage(props: Props) {
             <b>Got to their website:</b>{' '}
             <a href={singleLocation.website}>{singleLocation.website}</a>
           </div>
-          <CommentForm />
+
+          <CommentForm comments={comments} />
         </div>
       </div>
     </main>
