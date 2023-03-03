@@ -22,6 +22,7 @@ export default function CommentForm(props: Props) {
         onChange={(event) => setContent(event.currentTarget.value)}
       />
       <button
+        className="btn btn-xs"
         onClick={async () => {
           const response = await fetch('/api/comments', {
             method: 'POST',
@@ -62,6 +63,7 @@ export default function CommentForm(props: Props) {
             )}
             {/* {''} */}
             <button
+              className="btn btn-circle btn-xs mx-2.5"
               onClick={async () => {
                 const response = await fetch(`/api/comments/${comment.id}`, {
                   method: 'DELETE',
@@ -85,6 +87,7 @@ export default function CommentForm(props: Props) {
             </button>
             {idOnEditMode !== comment.id ? (
               <button
+                className="btn btn-xs"
                 onClick={() => {
                   setIdOnEditMode(comment.id);
                   setEditContent(comment.content);
@@ -94,6 +97,7 @@ export default function CommentForm(props: Props) {
               </button>
             ) : (
               <button
+                className="btn btn-xs"
                 onClick={async () => {
                   const response = await fetch(`/api/comments/${comment.id}`, {
                     method: 'PUT',

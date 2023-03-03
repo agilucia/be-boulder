@@ -1,8 +1,10 @@
+// import { cookies } from 'next/headers';
 import Image from 'next/image';
 // import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { getComments } from '../../../database/comments';
 import { getLocation } from '../../../database/locations';
+// import { getValidSessionByToken } from '../../../database/sessions';
 import CommentForm from './CommentForm';
 import { locationNotFoundMetadata } from './not-found';
 
@@ -15,6 +17,19 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props) {
+  // // check if i have a valid session
+  // const sessionTokenCookie = cookies().get('sessionToken');
+
+  // const session =
+  //   sessionTokenCookie &&
+  //   (await getValidSessionByToken(sessionTokenCookie.value));
+
+  // // for example you may also check if session user is an admin role
+
+  // if (!session) {
+  //   redirect('/login?returnTo=/locations/${location.id}');
+  // }
+
   const singleLocation = await getLocation(parseInt(props.params.locationId));
 
   if (!singleLocation) {
