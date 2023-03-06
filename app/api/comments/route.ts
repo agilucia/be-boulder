@@ -4,6 +4,7 @@ import { Comment, createComment } from '../../../database/comments';
 
 const commentType = z.object({
   content: z.string(),
+  locationId: z.number(),
 });
 
 export type CommentsResponseBodyPost = { error: string } | { comment: Comment };
@@ -24,7 +25,10 @@ export async function POST(
     );
   }
 
-  const newComment = await createComment(result.data.content);
+  const newComment = await createComment(
+    result.data.content,
+    result.data.locationId,
+  );
 
   if (!newComment) {
     return NextResponse.json(

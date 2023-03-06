@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 // import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
-import { getComments } from '../../../database/comments';
+import { getCommentsForLocation } from '../../../database/comments';
 import { getLocation } from '../../../database/locations';
 import { getValidSessionByToken } from '../../../database/sessions';
 import CommentForm from './CommentForm';
@@ -50,7 +50,7 @@ export default async function LocationPage(props: Props) {
     notFound();
   }
 
-  const comments = await getComments();
+  const comments = await getCommentsForLocation(singleLocation.id);
 
   return (
     <main className="flex flex-col items-center">
@@ -80,7 +80,7 @@ export default async function LocationPage(props: Props) {
             <a href={singleLocation.website}>{singleLocation.website}</a>
           </div>
 
-          <CommentForm comments={comments} />
+          <CommentForm comments={comments} locationId={singleLocation.id} />
         </div>
       </div>
     </main>

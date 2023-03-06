@@ -4,12 +4,13 @@ import { sql } from './connect';
 export type Comment = {
   id: number;
   content: string;
+  locationId: string;
 };
 
 // get all animals
-export const getComments = cache(async () => {
+export const getCommentsForLocation = cache(async (locationId: number) => {
   const comments = await sql<Comment[]>`
-    SELECT * FROM comments
+    SELECT * FROM comments WHERE comments.location_id = ${locationId}
   `;
 
   return comments;
@@ -28,16 +29,18 @@ export const getCommentById = cache(async (id: number) => {
   return comment;
 });
 
-export const createComment = cache(async (content: string) => {
-  const [comment] = await sql<Comment[]>`
+export const createComment = cache(
+  async (content: string, locationId: number) => {
+    const [comment] = await sql<Comment[]>`
       INSERT INTO comments
-        (content)
+        (content, location_id)
       VALUES
-        (${content})
+        (${content}, ${locationId})
       RETURNING *
     `;
-  return comment;
-});
+    return comment;
+  },
+);
 
 export const updateCommentById = cache(async (id: number, content: string) => {
   const [comment] = await sql<Comment[]>`

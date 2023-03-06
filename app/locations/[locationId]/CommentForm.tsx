@@ -4,7 +4,55 @@ import { Comment } from '../../../database/comments';
 
 type Props = {
   comments: Comment[];
+  locationId: number;
 };
+
+// possible solution x katja
+
+// type Comment = {
+//   id: number;
+//   locationId: number;
+//   text: string;
+// };
+
+// type Props = {
+//   comments: Comment[];
+//   locationId: number;
+// };
+
+// export default function CommentForm({ comments, locationId }: Props) {
+//   const [newComment, setNewComment] = useState({ locationId, text: '' });
+//   const filteredComments = comments.filter(
+//     (comment) => comment.locationId === locationId,
+//   );
+//   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+//     event.preventDefault();
+//     // handle submit logic with newComment object
+//     console.log(newComment);
+//     setNewComment({ locationId, text: '' });
+//   };
+
+//   return (
+//     <div className="card-footer">
+//       <h3>Comments</h3>
+//       {filteredComments.map((comment) => (
+//         <p key={`comment-${comment.id}`}>{comment.text}</p>
+//       ))}
+//       <form onSubmit={handleSubmit}>
+//         <textarea
+//           value={newComment.text}
+//           onChange={(event) =>
+//             setNewComment({ locationId, text: event.target.value })
+//           }
+//           required
+//         />
+//         <button type="submit">Add Comment</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// original version
 
 export default function CommentForm(props: Props) {
   const [comments, setComments] = useState<Comment[]>(props.comments);
@@ -12,6 +60,10 @@ export default function CommentForm(props: Props) {
   const [content, setContent] = useState<string>('');
   const [editContent, setEditContent] = useState<string>('');
   const [error, setError] = useState<string>();
+
+  // const filteredComments = comments.filter(
+  //   (comment) => comment.locationId === location.id,
+  // );
 
   return (
     <main>
@@ -24,6 +76,7 @@ export default function CommentForm(props: Props) {
       <button
         className="btn btn-xs"
         onClick={async () => {
+          const locationId = props.locationId;
           const response = await fetch('/api/comments', {
             method: 'POST',
             headers: {
@@ -31,6 +84,7 @@ export default function CommentForm(props: Props) {
             },
             body: JSON.stringify({
               content,
+              locationId,
             }),
           });
 
