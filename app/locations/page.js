@@ -1,9 +1,13 @@
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getLocations } from '../../database/locations';
-import Map from './Map';
 
-export const dynamic = 'force-dynamic';
+// import Map from './Map';
+
+// export const dynamic = 'force-dynamic';
+
+const Map = dynamic(() => import('./Map'), { ssr: false });
 
 export const metadata = {
   title: 'Locations',

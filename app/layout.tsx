@@ -19,11 +19,13 @@ export const dynamic = 'force-dynamic';
 export default async function RootLayout(props: Props) {
   // 1. get the session token from the cookie
   const cookieStore = cookies();
-  const token = cookieStore.get('sessionToken');
+  const sessionToken = cookieStore.get('sessionToken');
 
   // 2. validate that session
   // 3. get the user profile matching the session
-  const user = token && (await getUserBySessionToken(token.value));
+  const user = !sessionToken?.value
+    ? undefined
+    : await getUserBySessionToken(sessionToken.value);
 
   return (
     <html lang="en">
@@ -42,7 +44,42 @@ export default async function RootLayout(props: Props) {
                 >
                   Map
                 </Link>
-                <Link
+                <div>
+                  {user ? (
+                    <>
+                      <Link
+                        href={`/profile/${user.username}`}
+                        className="btn btn-ghost normal-case text-lg"
+                      >
+                        {user.username}
+                      </Link>
+                      <Link
+                        href="/logout"
+                        prefetch={false}
+                        className="btn btn-ghost normal-case text-lg"
+                      >
+                        logout
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        href="/register"
+                        className="btn btn-ghost normal-case text-lg"
+                      >
+                        register
+                      </Link>
+                      <Link
+                        href="/login"
+                        className="btn btn-ghost normal-case text-lg"
+                      >
+                        login
+                      </Link>
+                    </>
+                  )}
+                </div>
+
+                {/* <Link
                   href="/register"
                   className="btn btn-ghost normal-case text-lg"
                 >
@@ -55,14 +92,14 @@ export default async function RootLayout(props: Props) {
                   login
                 </Link>
                 {/* we want to disable prefetch for logout link */}
-                <Link
+                {/* <Link
                   className="btn btn-ghost normal-case text-lg"
                   href="/logout"
                   prefetch={false}
                 >
                   logout
                 </Link>
-                {user && user.username}
+                {user && user.username} */}
               </div>
             </div>
           </nav>

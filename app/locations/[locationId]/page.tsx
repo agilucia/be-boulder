@@ -1,10 +1,10 @@
-// import { cookies } from 'next/headers';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 // import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { getComments } from '../../../database/comments';
 import { getLocation } from '../../../database/locations';
-// import { getValidSessionByToken } from '../../../database/sessions';
+import { getValidSessionByToken } from '../../../database/sessions';
 import CommentForm from './CommentForm';
 import { locationNotFoundMetadata } from './not-found';
 
@@ -17,18 +17,18 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props) {
-  // // check if i have a valid session
-  // const sessionTokenCookie = cookies().get('sessionToken');
+  // check if i have a valid session
+  const sessionTokenCookie = cookies().get('sessionToken');
 
-  // const session =
-  //   sessionTokenCookie &&
-  //   (await getValidSessionByToken(sessionTokenCookie.value));
+  const session =
+    sessionTokenCookie &&
+    (await getValidSessionByToken(sessionTokenCookie.value));
 
-  // // for example you may also check if session user is an admin role
+  // for example you may also check if session user is an admin role
 
-  // if (!session) {
-  //   redirect('/login?returnTo=/locations/${location.id}');
-  // }
+  if (!session) {
+    redirect(`/login?returnTo=/locations/${props.params.locationId}`);
+  }
 
   const singleLocation = await getLocation(parseInt(props.params.locationId));
 
@@ -65,14 +65,16 @@ export default async function LocationPage(props: Props) {
           />
         </figure>
         <div className="card-body">
-          <h1 className="card-title">{singleLocation.name}</h1>
+          <h1 className="card-title">
+            {singleLocation.name} <button>📌</button>
+          </h1>
           <p>{singleLocation.description}</p>
           <div>
             <b>Address:</b> {singleLocation.address}
             <br />
             <b>Opening hours:</b> {singleLocation.openingHours}
             <br />
-            {singleLocation.price}
+            <b>{singleLocation.price}</b>
             <br />
             <b>Got to their website:</b>{' '}
             <a href={singleLocation.website}>{singleLocation.website}</a>

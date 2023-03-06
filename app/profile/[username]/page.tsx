@@ -14,6 +14,7 @@ export default async function UserProfile({ params }: Props) {
     <>
       <h1>{user.username}</h1>
       <p>id: {user.id}</p>
+      <div>MY FAVORITES:</div>
     </>
   );
 }
