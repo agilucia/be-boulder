@@ -1,6 +1,5 @@
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
-import { comment } from 'postcss';
 import { z } from 'zod';
 import {
   Comment,
@@ -85,8 +84,8 @@ export async function DELETE(
     return NextResponse.json({ comment: singleComment });
   } else {
     return NextResponse.json(
-      { error: 'You cannot delete this comment, you sausage!!!' },
-      { status: 404 },
+      { error: 'You cannot delete this comment!' },
+      { status: 403 },
     );
   }
 }
@@ -127,7 +126,7 @@ export async function PUT(
   if (!result.success) {
     return NextResponse.json(
       {
-        error: 'Request body is missing the needed property content',
+        error: 'Request body is missing a needed property',
       },
       { status: 400 },
     );
@@ -143,8 +142,8 @@ export async function PUT(
     return NextResponse.json({ comment: newComment });
   } else {
     return NextResponse.json(
-      { error: 'You cannot edit this comment, you sausage!!!' },
-      { status: 404 },
+      { error: 'You cannot edit this comment!' },
+      { status: 403 },
     );
   }
 }
