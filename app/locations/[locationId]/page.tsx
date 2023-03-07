@@ -2,9 +2,11 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 // import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
+import { NextResponse } from 'next/server';
 import { getCommentsForLocation } from '../../../database/comments';
 import { getLocation } from '../../../database/locations';
 import { getValidSessionByToken } from '../../../database/sessions';
+import { getUserBySessionToken } from '../../../database/users';
 import CommentForm from './CommentForm';
 import { locationNotFoundMetadata } from './not-found';
 
@@ -13,6 +15,7 @@ export const dynamic = 'force-dynamic';
 type Props = {
   params: {
     locationId: string;
+    // userId: string;
   };
 };
 
@@ -43,6 +46,19 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function LocationPage(props: Props) {
+  // this is a protected Route Handler
+  // 1. get the session token from the cookie
+  const cookieStore = cookies();
+  const token = cookieStore.get('sessionToken');
+
+  // 2. validate that session
+  // 3. get the user profile matching the session
+  const user = token && (await getUserBySessionToken(token.value));
+
+  if (!user) {
+    return NextResponse.json({ error: 'session token is not valid' });
+  }
+
   const singleLocation = await getLocation(parseInt(props.params.locationId));
 
   if (!singleLocation) {
@@ -52,6 +68,8 @@ export default async function LocationPage(props: Props) {
 
   const comments = await getCommentsForLocation(singleLocation.id);
 
+  // const currentUser = await getUserBySessionToken();
+
   return (
     <main className="flex flex-col items-center">
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -59,8 +77,8 @@ export default async function LocationPage(props: Props) {
           <Image
             src={`/images/${singleLocation.id}.jpg`}
             alt={singleLocation.name}
-            width="200"
-            height="200"
+            width="300"
+            height="300"
             className="py-5"
           />
         </figure>
@@ -80,7 +98,11 @@ export default async function LocationPage(props: Props) {
             <a href={singleLocation.website}>{singleLocation.website}</a>
           </div>
 
-          <CommentForm comments={comments} locationId={singleLocation.id} />
+          <CommentForm
+            comments={comments}
+            locationId={singleLocation.id}
+            userId={user.id}
+          />
         </div>
       </div>
     </main>

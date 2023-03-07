@@ -12,6 +12,7 @@ export default function LoginForm(props: { returnTo?: string | string[] }) {
 
   return (
     <form
+      className="card w-96 bg-base-100 shadow-xl"
       onSubmit={async (event) => {
         event.preventDefault();
 
@@ -45,21 +46,25 @@ export default function LoginForm(props: { returnTo?: string | string[] }) {
       {errors.map((error) => (
         <div key={`error-${error.message}`}>Error: {error.message}</div>
       ))}
-      <label>
-        username:
-        <input
-          value={username}
-          onChange={(event) => setUsername(event.currentTarget.value)}
-        />
-      </label>
-      <label>
-        password:
-        <input
-          value={password}
-          onChange={(event) => setPassword(event.currentTarget.value)}
-        />
-      </label>
-      <button>Login</button>
+      <div className="card-body items-center text-center">
+        <label>
+          username:
+          <input
+            className="input input-bordered input-primary w-full max-w-xs"
+            value={username}
+            onChange={(event) => setUsername(event.currentTarget.value)}
+          />
+        </label>
+        <label>
+          password:
+          <input
+            className="input input-bordered input-primary w-full max-w-xs"
+            value={password}
+            onChange={(event) => setPassword(event.currentTarget.value)}
+          />
+        </label>
+        <button className="btn btn-outline btn-primary">Login</button>
+      </div>
     </form>
   );
 }

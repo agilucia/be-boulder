@@ -34,7 +34,7 @@ export default async function RootLayout(props: Props) {
         <header>
           <nav>
             <div>
-              <div className="navbar bg-base-100">
+              <div className="navbar bg-base-100 justify-center">
                 <Link href="/" className="btn btn-ghost normal-case text-lg">
                   Home
                 </Link>
