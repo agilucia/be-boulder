@@ -8,7 +8,9 @@ import {
 import { getUserByUsername } from '../../../database/users';
 import RemoveFavorite from './RemoveFavorite';
 
-type Props = { params: { username: string } };
+type Props = {
+  params: { username: string; userId: number };
+};
 
 export default async function UserProfile({ params }: Props) {
   const user = await getUserByUsername(params.username);
@@ -20,7 +22,7 @@ export default async function UserProfile({ params }: Props) {
   // const favorites = await getFavorites(user.id);
   const favorites = await getFavoriteByIdWithLocationInfo(user.id);
 
-  const favoritesLol = await getFavorites(user.id);
+  // const favoritesLol = await getFavorites(user.id);
 
   return (
     <main className="flex flex-col items-center">
@@ -47,9 +49,9 @@ export default async function UserProfile({ params }: Props) {
                   </div>
                 </Link>
                 <RemoveFavorite
-                  favorites={favoritesLol}
-                  locationId={favorite.locationId}
-                  userId={user.id}
+                  favorites={favorites}
+                  // locationId={favorite.locationId}
+                  // userId={params.userId}
                 />
               </div>
             );

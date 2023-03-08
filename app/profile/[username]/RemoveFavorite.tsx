@@ -1,13 +1,18 @@
 'use client';
 import { useState } from 'react';
-import { Favorite } from '../../../database/favorites';
+import {
+  Favorite,
+  FavoriteWithLocationInfo,
+} from '../../../database/favorites';
 
 type Props = {
-  favorites: Favorite[];
+  favorites: FavoriteWithLocationInfo[];
 };
 
 export default function RemoveFavorite(props: Props) {
-  const [favorites, setFavorites] = useState<Favorite[]>(props.favorites);
+  const [favorites, setFavorites] = useState<FavoriteWithLocationInfo[]>(
+    props.favorites,
+  );
   // const [idOnEditMode, setIdOnEditMode] = useState<number>();
   const [error, setError] = useState<string>();
 
@@ -15,12 +20,12 @@ export default function RemoveFavorite(props: Props) {
     <main>
       {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
       {favorites.map((favorite) => (
-        <div key={`favorite-${favorite.id}`}>
+        <div key={`favorite-${favorite.favoriteId}`}>
           <button
             onClick={async () => {
               // const locationId = props.locationId;
 
-              const response = await fetch(`/api/favorites/${favorite.id}`, {
+              const response = await fetch(`/api/favorites/${favorite.favoriteId}`, {
                 method: 'DELETE',
               });
 
@@ -33,7 +38,7 @@ export default function RemoveFavorite(props: Props) {
 
               setFavorites(
                 favorites.filter(
-                  (favoriteOnState) => favoriteOnState.id !== data.favorite.id,
+                  (favoriteOnState) => favoriteOnState.favoriteId !== data.favorite.id,
                 ),
               );
             }}

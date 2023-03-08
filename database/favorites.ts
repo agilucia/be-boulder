@@ -69,11 +69,14 @@ export const getFavoriteByIdWithLocationInfo = cache(async (userId: number) => {
     favorites.id AS favorite_id,
     locations.id AS location_id,
     locations.name AS location_name,
-    locations.opening_hours AS location_opening_hours
+    locations.opening_hours AS location_opening_hours,
+    users.id AS user_id
   FROM
     favorites
   INNER JOIN
     locations ON favorites.location_id = locations.id
+  INNER JOIN
+    users ON favorites.user_id = users.id
   WHERE
     favorites.user_id = ${userId}
   `;
