@@ -8,7 +8,7 @@ export type Comment = {
   userId: number;
 };
 
-// get all comments
+// get all comments for single location
 export const getCommentsForLocation = cache(async (locationId: number) => {
   const comments = await sql<Comment[]>`
     SELECT * FROM comments WHERE comments.location_id = ${locationId}

@@ -4,9 +4,11 @@ import Image from 'next/image';
 import { notFound, redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
 import { getCommentsForLocation } from '../../../database/comments';
+import { getFavorites } from '../../../database/favorites';
 import { getLocation } from '../../../database/locations';
 import { getValidSessionByToken } from '../../../database/sessions';
 import { getUserBySessionToken } from '../../../database/users';
+import AddFavorite from './AddFavorite';
 import CommentForm from './CommentForm';
 import { locationNotFoundMetadata } from './not-found';
 
@@ -68,6 +70,7 @@ export default async function LocationPage(props: Props) {
 
   const comments = await getCommentsForLocation(singleLocation.id);
 
+  const favorites = await getFavorites(singleLocation.id);
   // const currentUser = await getUserBySessionToken();
 
   return (
@@ -84,7 +87,12 @@ export default async function LocationPage(props: Props) {
         </figure>
         <div className="card-body">
           <h1 className="card-title">
-            {singleLocation.name} <button>📌</button>
+            {singleLocation.name}{' '}
+            <AddFavorite
+              favorites={favorites}
+              locationId={singleLocation.id}
+              userId={user.id}
+            />
           </h1>
           <p>{singleLocation.description}</p>
           <div>
