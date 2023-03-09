@@ -22,18 +22,18 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props) {
-  // check if i have a valid session
-  const sessionTokenCookie = cookies().get('sessionToken');
+  // // check if i have a valid session
+  // const sessionTokenCookie = cookies().get('sessionToken');
 
-  const session =
-    sessionTokenCookie &&
-    (await getValidSessionByToken(sessionTokenCookie.value));
+  // const session =
+  //   sessionTokenCookie &&
+  //   (await getValidSessionByToken(sessionTokenCookie.value));
 
-  // for example you may also check if session user is an admin role
+  // // for example you may also check if session user is an admin role
 
-  if (!session) {
-    redirect(`/login?returnTo=/locations/${props.params.locationId}`);
-  }
+  // if (!session) {
+  //   redirect(`/login?returnTo=/locations/${props.params.locationId}`);
+  // }
 
   const singleLocation = await getLocation(parseInt(props.params.locationId));
 
@@ -57,11 +57,14 @@ export default async function LocationPage(props: Props) {
   // 3. get the user profile matching the session
   const user = token && (await getUserBySessionToken(token.value));
 
-  if (!user) {
-    return NextResponse.json({ error: 'session token is not valid' });
-  }
-
   const singleLocation = await getLocation(parseInt(props.params.locationId));
+
+  if (!user) {
+    return (
+      NextResponse.json({ error: 'session token is not valid' }),
+      redirect(`/login?returnTo=/locations/${props.params.locationId}`)
+    );
+  }
 
   if (!singleLocation) {
     // throw new error
@@ -71,7 +74,6 @@ export default async function LocationPage(props: Props) {
   const comments = await getCommentsForLocation(singleLocation.id);
 
   const favorites = await getFavorites(singleLocation.id);
-  // const currentUser = await getUserBySessionToken();
 
   return (
     <main className="flex flex-col items-center">

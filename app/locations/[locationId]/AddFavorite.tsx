@@ -11,6 +11,7 @@ type Props = {
 export default function AddFavorite(props: Props) {
   const [favorites, setFavorites] = useState<Favorite[]>(props.favorites);
   const [error, setError] = useState<string>();
+  const [errors, setErrors] = useState<{ message: string }[]>([]);
 
   return (
     <main>
@@ -40,6 +41,9 @@ export default function AddFavorite(props: Props) {
       >
         📌
       </button>
+      {errors.map((error) => (
+        <div key={`error-${error.message}`}>Error: {error.message}</div>
+      ))}
     </main>
   );
 }

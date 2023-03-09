@@ -1,15 +1,21 @@
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { createFavorite, Favorite } from '../../../database/favorites';
+import {
+  createFavorite,
+  Favorite,
+  getFavoriteByUserAndLocation,
+} from '../../../database/favorites';
 import { getUserBySessionToken } from '../../../database/users';
 
 const favoriteType = z.object({
   locationId: z.number(),
+  // userId: z.number(),
+  // id: z.number(),
 });
 
 export type FavoritesResponseBodyPost =
-  | { error: string }
+  | { errors: { message: string }[] }
   | { favorite: Favorite };
 
 export async function POST(
@@ -25,7 +31,9 @@ export async function POST(
   const user = token && (await getUserBySessionToken(token.value));
 
   if (!user) {
-    return NextResponse.json({ error: 'session token is not valid' });
+    return NextResponse.json({
+      errors: [{ message: 'session token is not valid' }],
+    });
   }
 
   const body = await request.json();
@@ -34,18 +42,32 @@ export async function POST(
 
   if (!result.success) {
     return NextResponse.json(
-      {
-        error: 'Request body is missing a needed property',
-      },
+      { errors: [{ message: 'Request body is missing a needed property' }] },
       { status: 400 },
     );
   }
+
+  console.log('before getFavoriteByUserAndLocation');
+
+  const existingFavorite = await getFavoriteByUserAndLocation(
+    result.data.locationId,
+    user.id,
+  );
+
+  if (existingFavorite) {
+    return NextResponse.json(
+      { errors: [{ message: 'Already saved to favorites!' }] },
+      { status: 400 },
+    );
+  }
+
+  console.log('before create favorite');
 
   const newFavorite = await createFavorite(result.data.locationId, user.id);
 
   if (!newFavorite) {
     return NextResponse.json(
-      { error: 'Favorite not created!' },
+      { errors: [{ message: 'Favorite not created!' }] },
       { status: 500 },
     );
   }

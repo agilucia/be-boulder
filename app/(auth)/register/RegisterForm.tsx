@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { RegisterResponseBody } from '../../api/(auth)/register/route';
+import { RegisterResponseBodyPost } from '../../api/(auth)/register/route';
 
 export default function RegisterForm(props: { returnTo?: string | string[] }) {
   const [username, setUsername] = useState('');
@@ -21,7 +21,7 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
           body: JSON.stringify({ username, password }),
         });
 
-        const data: RegisterResponseBody = await response.json();
+        const data: RegisterResponseBodyPost = await response.json();
 
         if ('errors' in data) {
           setErrors(data.errors);
@@ -57,6 +57,7 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
         <label>
           password:
           <input
+            type="password"
             className="input input-bordered input-primary w-full max-w-xs"
             value={password}
             onChange={(event) => setPassword(event.currentTarget.value)}

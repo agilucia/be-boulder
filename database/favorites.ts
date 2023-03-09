@@ -30,6 +30,23 @@ export const getFavoriteById = cache(async (id: number) => {
   return favorite;
 });
 
+export const getFavoriteByUserAndLocation = cache(
+  async (userId: number, locationId: number) => {
+    const [favorite] = await sql<Favorite[]>`
+  SELECT
+    user_id,
+    location_id
+  FROM
+    favorites
+  WHERE
+    user_id = ${userId} AND
+    location_id = ${locationId}
+  `;
+
+    return favorite;
+  },
+);
+
 export const createFavorite = cache(
   async (locationId: number, userId: number) => {
     const [favorite] = await sql<Favorite[]>`
