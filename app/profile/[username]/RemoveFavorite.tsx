@@ -1,52 +1,47 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import {
-  Favorite,
-  FavoriteWithLocationInfo,
-} from '../../../database/favorites';
+import { FavoriteWithLocationInfo } from '../../../database/favorites';
 
 type Props = {
-  favorites: FavoriteWithLocationInfo[];
+  favorite: FavoriteWithLocationInfo;
 };
 
 export default function RemoveFavorite(props: Props) {
-  const [favorites, setFavorites] = useState<FavoriteWithLocationInfo[]>(
-    props.favorites,
-  );
   // const [idOnEditMode, setIdOnEditMode] = useState<number>();
   const [error, setError] = useState<string>();
+
+  const router = useRouter();
 
   return (
     <main>
       {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
-      {favorites.map((favorite) => (
-        <div key={`favorite-${favorite.favoriteId}`}>
-          <button
-            onClick={async () => {
-              // const locationId = props.locationId;
 
-              const response = await fetch(`/api/favorites/${favorite.favoriteId}`, {
+      <div key={`favorite-${props.favorite.favoriteId}`}>
+        <button
+          onClick={async () => {
+            // const locationId = props.locationId;
+
+            const response = await fetch(
+              `/api/favorites/${props.favorite.favoriteId}`,
+              {
                 method: 'DELETE',
-              });
+              },
+            );
 
-              const data = await response.json();
+            const data = await response.json();
 
-              if (data.error) {
-                setError(data.error);
-                return;
-              }
+            if (data.error) {
+              setError(data.error);
+              return;
+            }
 
-              setFavorites(
-                favorites.filter(
-                  (favoriteOnState) => favoriteOnState.favoriteId !== data.favorite.id,
-                ),
-              );
-            }}
-          >
-            🗑️
-          </button>
-        </div>
-      ))}
+            router.refresh();
+          }}
+        >
+          🗑️
+        </button>
+      </div>
     </main>
   );
 }

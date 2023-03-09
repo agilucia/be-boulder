@@ -1,10 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import {
-  getFavoriteByIdWithLocationInfo,
-  getFavorites,
-} from '../../../database/favorites';
+import { getFavoriteByIdWithLocationInfo } from '../../../database/favorites';
 import { getUserByUsername } from '../../../database/users';
 import RemoveFavorite from './RemoveFavorite';
 
@@ -19,16 +16,17 @@ export default async function UserProfile({ params }: Props) {
     notFound();
   }
 
-  // const favorites = await getFavorites(user.id);
   const favorites = await getFavoriteByIdWithLocationInfo(user.id);
-
-  // const favoritesLol = await getFavorites(user.id);
 
   return (
     <main className="flex flex-col items-center">
-      <h1>{user.username}</h1>
+      <h1>
+        <b>{user.username}</b>
+      </h1>
       <p>id: {user.id}</p>
-      <div>MY FAVORITES:</div>
+      <div>
+        <b>MY FAVORITES:</b>
+      </div>
       <div className="card w-96 bg-base-100 shadow-xl">
         <span>
           {favorites.map((favorite) => {
@@ -48,11 +46,7 @@ export default async function UserProfile({ params }: Props) {
                     <p>{favorite.locationOpeningHours}</p>
                   </div>
                 </Link>
-                <RemoveFavorite
-                  favorites={favorites}
-                  // locationId={favorite.locationId}
-                  // userId={params.userId}
-                />
+                <RemoveFavorite favorite={favorite} />
               </div>
             );
           })}
