@@ -10,7 +10,7 @@ type Props = {
 
 export default function AddFavorite(props: Props) {
   const [favorites, setFavorites] = useState<Favorite[]>(props.favorites);
-  const [error, setError] = useState<string>();
+  // const [error, setError] = useState<string>();
   const [errors, setErrors] = useState<{ message: string }[]>([]);
 
   return (
@@ -31,8 +31,8 @@ export default function AddFavorite(props: Props) {
 
           const data = await response.json();
 
-          if (data.error) {
-            setError(data.error);
+          if ('errors' in data) {
+            setErrors(data.errors);
             return;
           }
 
@@ -42,7 +42,7 @@ export default function AddFavorite(props: Props) {
         📌
       </button>
       {errors.map((error) => (
-        <div key={`error-${error.message}`}>Error: {error.message}</div>
+        <div key={`error-${error.message}`}>{error.message}</div>
       ))}
     </main>
   );
