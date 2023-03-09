@@ -1,8 +1,10 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import { getUserBySessionToken } from '../../../database/users';
+import { getUserBySessionToken, User } from '../../../database/users';
 
-export async function GET() {
+export type ProfileResponseBodyGet = { error: string } | { user: User };
+
+export async function GET(): Promise<NextResponse<ProfileResponseBodyGet>> {
   // this is a protected Route Handler
   // 1. get the session token from the cookie
   const cookieStore = cookies();
@@ -17,5 +19,5 @@ export async function GET() {
   }
   // 4. return the user profile
 
-  return NextResponse.json(user);
+  return NextResponse.json({ user: user });
 }

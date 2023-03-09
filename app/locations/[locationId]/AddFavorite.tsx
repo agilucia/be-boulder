@@ -40,33 +40,6 @@ export default function AddFavorite(props: Props) {
       >
         📌
       </button>
-      {/* {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
-      <div>
-        {favorites.map((favorite) => (
-          <button
-            onClick={async () => {
-              const response = await fetch(`/api/favorites/${favorite.id}`, {
-                method: 'DELETE',
-              });
-
-              const data = await response.json();
-
-              if (data.error) {
-                setError(data.error);
-                return;
-              }
-
-              setFavorites(
-                favorites.filter(
-                  (favoriteOnState) => favoriteOnState.id !== data.favorite.id,
-                ),
-              );
-            }}
-          >
-            🗑️
-          </button>
-        ))}
-      </div> */}
     </main>
   );
 }
