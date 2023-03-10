@@ -30,9 +30,9 @@ export default async function RootLayout(props: Props) {
   return (
     <html lang="en">
       <head />
-      <body>
-        <header>
-          <nav>
+      <body className="mt-6">
+        {/* <header> */}
+        {/* <nav>
             <div>
               <div className="navbar bg-base-100 justify-center">
                 <Link href="/" className="btn btn-ghost normal-case text-lg">
@@ -77,35 +77,37 @@ export default async function RootLayout(props: Props) {
                       </Link>
                     </>
                   )}
-                </div>
+                </div> */}
 
-                {/* <Link
+        {/* <Link
                   href="/register"
-                  className="btn btn-ghost normal-case text-lg"
+                  classNameName="btn btn-ghost normal-case text-lg"
                 >
                   register
                 </Link>
                 <Link
                   href="/login"
-                  className="btn btn-ghost normal-case text-lg"
+                  classNameName="btn btn-ghost normal-case text-lg"
                 >
                   login
                 </Link>
                 {/* we want to disable prefetch for logout link */}
-                {/* <Link
-                  className="btn btn-ghost normal-case text-lg"
+        {/* <Link
+                  classNameName="btn btn-ghost normal-case text-lg"
                   href="/logout"
                   prefetch={false}
                 >
                   logout
                 </Link>
                 {user && user.username} */}
-              </div>
+        {/* </div>
             </div>
           </nav>
-        </header>
+        </header> */}
+
+        {props.children}
         <div className="btm-nav">
-          <button>
+          <Link href="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -120,41 +122,93 @@ export default async function RootLayout(props: Props) {
                 d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
               />
             </svg>
-          </button>
-          <button className="active">
+          </Link>
+          <Link href="/locations">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
+              strokeWidth="1.5"
               stroke="currentColor"
+              className="w-6 h-6"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
-                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
               />
             </svg>
-          </button>
-          <button>
+          </Link>
+          <button className="dropdown dropdown-top dropdown-end h-5 w-5">
+            <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-36">
+              {user ? (
+                <>
+                  <li>
+                    <Link
+                      href={`/profile/${user.username}`}
+                      className="btn btn-ghost normal-case text-lg"
+                    >
+                      {user.username}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/logout"
+                      prefetch={false}
+                      className="btn btn-ghost normal-case text-lg"
+                    >
+                      logout
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link
+                      href="/register"
+                      className="btn btn-ghost normal-case text-lg"
+                    >
+                      register
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/login"
+                      className="btn btn-ghost normal-case text-lg"
+                    >
+                      login
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
+              strokeWidth="1.5"
               stroke="currentColor"
+              className="w-6 h-6"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
           </button>
         </div>
-        {props.children}
+        <footer className="footer footer-center p-4 bg-base-300 text-base-content mb-16">
+          <div>
+            <p>Copyright © 2023 - All right reserved by BE BOULDER</p>
+          </div>
+        </footer>
       </body>
     </html>
   );

@@ -18,5 +18,14 @@ export default async function RegisterPage(props: Props) {
   if (session) {
     redirect('/');
   }
-  return <RegisterForm returnTo={props.searchParams.returnTo} />;
+  return (
+    <main className="flex flex-col items-center">
+      <h1 className="text-xl">
+        <b>REGISTER</b>
+      </h1>
+      <div className="flex items-center justify-center">
+        <RegisterForm returnTo={props.searchParams.returnTo} />
+      </div>
+    </main>
+  );
 }

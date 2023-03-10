@@ -6,7 +6,6 @@ import { NextResponse } from 'next/server';
 import { getCommentsForLocation } from '../../../database/comments';
 import { getFavorites } from '../../../database/favorites';
 import { getLocation } from '../../../database/locations';
-import { getValidSessionByToken } from '../../../database/sessions';
 import { getUserBySessionToken } from '../../../database/users';
 import AddFavorite from './AddFavorite';
 import CommentForm from './CommentForm';
@@ -22,19 +21,6 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props) {
-  // // check if i have a valid session
-  // const sessionTokenCookie = cookies().get('sessionToken');
-
-  // const session =
-  //   sessionTokenCookie &&
-  //   (await getValidSessionByToken(sessionTokenCookie.value));
-
-  // // for example you may also check if session user is an admin role
-
-  // if (!session) {
-  //   redirect(`/login?returnTo=/locations/${props.params.locationId}`);
-  // }
-
   const singleLocation = await getLocation(parseInt(props.params.locationId));
 
   if (!singleLocation) {
@@ -77,7 +63,7 @@ export default async function LocationPage(props: Props) {
 
   return (
     <main className="flex flex-col items-center">
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-96 bg-base-100 shadow-xl my-2">
         <figure>
           <Image
             src={`/images/${singleLocation.id}.jpg`}

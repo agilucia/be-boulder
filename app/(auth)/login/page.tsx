@@ -20,5 +20,14 @@ export default async function LoginPage(props: Props) {
   }
 
   // if no render login component
-  return <LoginForm returnTo={props.searchParams.returnTo} />;
+  return (
+    <main className="flex flex-col items-center">
+      <h1 className="text-xl">
+        <b>LOGIN</b>
+      </h1>
+      <div className="flex items-center justify-center">
+        <LoginForm returnTo={props.searchParams.returnTo} />
+      </div>
+    </main>
+  );
 }

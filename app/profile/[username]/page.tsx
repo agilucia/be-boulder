@@ -23,35 +23,39 @@ export default async function UserProfile({ params }: Props) {
       <h1>
         <b>{user.username}</b>
       </h1>
-      <p>id: {user.id}</p>
+      {/* <p>id: {user.id}</p> */}
       <div>
         <b>MY FAVORITES:</b>
       </div>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <span>
-          {favorites.map((favorite) => {
-            return (
-              <div key={`location-${favorite.locationId}`}>
-                <Link href={`/locations/${favorite.locationId}`}>
-                  <figure className="px-10 pt-10">
-                    <Image
-                      src={`/images/${favorite.locationId}.jpg`}
-                      alt="location image"
-                      width="200"
-                      height="200"
-                    />
-                  </figure>
-                  <div className="card-body items-center text-center">
-                    <h3 className="card-title">{favorite.locationName}</h3>
-                    <p>{favorite.locationOpeningHours}</p>
-                  </div>
-                </Link>
+
+      <span>
+        {favorites.map((favorite) => {
+          return (
+            <div
+              key={`location-${favorite.locationId}`}
+              className="card w-96 bg-base-100 shadow-xl my-2 items-center"
+            >
+              <Link href={`/locations/${favorite.locationId}`}>
+                <figure className="px-10 pt-10">
+                  <Image
+                    src={`/images/${favorite.locationId}.jpg`}
+                    alt="location image"
+                    width="200"
+                    height="200"
+                  />
+                </figure>
+                <div className="card-body items-center text-center">
+                  <h3 className="card-title">{favorite.locationName}</h3>
+                  <p>{favorite.locationOpeningHours}</p>
+                </div>
+              </Link>
+              <div className="mb-2 -mt-5">
                 <RemoveFavorite favorite={favorite} />
               </div>
-            );
-          })}
-        </span>
-      </div>
+            </div>
+          );
+        })}
+      </span>
     </main>
   );
 }
