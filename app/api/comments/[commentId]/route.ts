@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import {
-  Comment,
+  CommentWithUsername,
   deleteCommentById,
   getCommentById,
   updateCommentById,
@@ -13,13 +13,17 @@ const commentType = z.object({
   content: z.string(),
 });
 
-export type CommentResponseBodyGet = { error: string } | { comment: Comment };
+export type CommentResponseBodyGet =
+  | { error: string }
+  | { comment: CommentWithUsername };
 
-export type CommentResponseBodyPut = { error: string } | { comment: Comment };
+export type CommentResponseBodyPut =
+  | { error: string }
+  | { comment: CommentWithUsername };
 
 export type CommentResponseBodyDelete =
   | { error: string }
-  | { comment: Comment };
+  | { comment: CommentWithUsername };
 
 export async function GET(
   request: NextRequest,

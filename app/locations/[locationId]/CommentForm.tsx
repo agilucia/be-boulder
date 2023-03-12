@@ -1,17 +1,21 @@
 'use client';
+import Link from 'next/link';
 import { useState } from 'react';
-import { Comment } from '../../../database/comments';
+import { CommentWithUsername } from '../../../database/comments';
 
 type Props = {
-  comments: Comment[];
+  comments: CommentWithUsername[];
   locationId: number;
   userId: number;
+  userName: string;
 };
 
 // original version
 
 export default function CommentForm(props: Props) {
-  const [comments, setComments] = useState<Comment[]>(props.comments);
+  const [comments, setComments] = useState<CommentWithUsername[]>(
+    props.comments,
+  );
   const [idOnEditMode, setIdOnEditMode] = useState<number>();
   const [content, setContent] = useState<string>('');
   const [editContent, setEditContent] = useState<string>('');
@@ -29,6 +33,7 @@ export default function CommentForm(props: Props) {
         className="btn btn-xs"
         onClick={async () => {
           const locationId = props.locationId;
+          const userName = props.userName;
           // const userId = props.userId;
           const response = await fetch('/api/comments', {
             method: 'POST',
@@ -39,6 +44,7 @@ export default function CommentForm(props: Props) {
               content,
               locationId,
               // userId,
+              userName,
             }),
           });
 
@@ -61,6 +67,11 @@ export default function CommentForm(props: Props) {
       <div>
         {comments.map((comment) => (
           <div key={`comment-${comment.id}`}>
+            <div>
+              <Link href={`/profile/${comment.userName}`}>
+                <b>{comment.userName}:</b>
+              </Link>
+            </div>
             {idOnEditMode !== comment.id ? (
               comment.content
             ) : (

@@ -165,6 +165,14 @@ export default async function RootLayout(props: Props) {
                       logout
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      href="/users"
+                      className="btn btn-ghost normal-case text-lg"
+                    >
+                      users
+                    </Link>
+                  </li>
                 </>
               ) : (
                 <>

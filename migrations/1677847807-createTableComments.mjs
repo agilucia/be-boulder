@@ -4,7 +4,8 @@ export async function up(sql) {
       id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
       content varchar(200) NOT NULL,
       user_id integer REFERENCES users (id) ON DELETE CASCADE,
-      location_id integer REFERENCES locations (id) ON DELETE CASCADE
+      location_id integer REFERENCES locations (id) ON DELETE CASCADE,
+      user_name varchar REFERENCES users (username) ON DELETE CASCADE
     )
   `;
 }

@@ -98,6 +98,7 @@ export default async function LocationPage(props: Props) {
             comments={comments}
             locationId={singleLocation.id}
             userId={user.id}
+            userName={user.username}
           />
         </div>
       </div>

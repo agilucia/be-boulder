@@ -1,16 +1,19 @@
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { Comment, createComment } from '../../../database/comments';
+import { CommentWithUsername, createComment } from '../../../database/comments';
 import { getUserBySessionToken } from '../../../database/users';
 
 const commentType = z.object({
   content: z.string(),
   locationId: z.number(),
   // userId: z.number(),
+  userName: z.string(),
 });
 
-export type CommentsResponseBodyPost = { error: string } | { comment: Comment };
+export type CommentsResponseBodyPost =
+  | { error: string }
+  | { comment: CommentWithUsername };
 
 export async function POST(
   request: NextRequest,
@@ -35,7 +38,7 @@ export async function POST(
   if (!result.success) {
     return NextResponse.json(
       {
-        error: 'Request body is missnig the needed property content',
+        error: 'Request body is missing the needed property content',
       },
       { status: 400 },
     );
@@ -45,6 +48,7 @@ export async function POST(
     result.data.content,
     result.data.locationId,
     user.id,
+    result.data.userName,
   );
 
   if (!newComment) {
