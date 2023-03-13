@@ -18,6 +18,7 @@ export default function AddFavorite(props: Props) {
       <button
         onClick={async () => {
           const locationId = props.locationId;
+          const userId = props.userId;
 
           const response = await fetch('/api/favorites', {
             method: 'POST',
@@ -25,6 +26,7 @@ export default function AddFavorite(props: Props) {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+              userId,
               locationId,
             }),
           });

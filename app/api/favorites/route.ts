@@ -10,7 +10,7 @@ import { getUserBySessionToken } from '../../../database/users';
 
 const favoriteType = z.object({
   locationId: z.number(),
-  // userId: z.number(),
+  userId: z.number(),
   // id: z.number(),
 });
 
@@ -50,8 +50,8 @@ export async function POST(
   console.log('before getFavoriteByUserAndLocation');
 
   const existingFavorite = await getFavoriteByUserAndLocation(
-    result.data.locationId,
     user.id,
+    result.data.locationId,
   );
 
   if (existingFavorite) {
