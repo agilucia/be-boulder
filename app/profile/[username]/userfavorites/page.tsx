@@ -1,34 +1,30 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getFavoriteByIdWithLocationInfo } from '../../../database/favorites';
-import { getUserByUsername } from '../../../database/users';
-import RemoveFavorite from './RemoveFavorite';
+import { getFavoriteByIdWithLocationInfo } from '../../../../database/favorites';
+import { getUserByUsername } from '../../../../database/users';
+import RemoveFavorite from '../RemoveFavorite';
 
 type Props = {
   params: { username: string; userId: number };
 };
 
-export default async function UserProfile({ params }: Props) {
+export default async function UserFavoritse({ params }: Props) {
   const user = await getUserByUsername(params.username);
 
   if (!user) {
     notFound();
   }
 
-  // const favorites = await getFavoriteByIdWithLocationInfo(user.id);
+  const favorites = await getFavoriteByIdWithLocationInfo(user.id);
 
   return (
     <main className="flex flex-col items-center">
       <h1>
-        <b>{user.username}</b>
+        <b>MY FAVORITES:</b>
       </h1>
-      {/* <p>id: {user.id}</p> */}
-      <Link href={`/profile/${user.username}/userfavorites`}>
-        <b>SEE MY FAVORITES</b>
-      </Link>
 
-      {/* <span>
+      <span>
         {favorites.map((favorite) => {
           return (
             <div
@@ -55,7 +51,7 @@ export default async function UserProfile({ params }: Props) {
             </div>
           );
         })}
-      </span> */}
+      </span>
     </main>
   );
 }
