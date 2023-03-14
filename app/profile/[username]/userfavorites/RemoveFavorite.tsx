@@ -1,7 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { FavoriteWithLocationInfo } from '../../../database/favorites';
+import { FavoriteWithLocationInfo } from '../../../../database/favorites';
 
 type Props = {
   favorite: FavoriteWithLocationInfo;

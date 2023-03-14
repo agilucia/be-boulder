@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getFavoriteByIdWithLocationInfo } from '../../../database/favorites';
 import { getUserByUsername } from '../../../database/users';
-import RemoveFavorite from './RemoveFavorite';
+import RemoveFavorite from './userfavorites/RemoveFavorite';
 
 type Props = {
   params: { username: string; userId: number };
