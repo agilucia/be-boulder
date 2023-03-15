@@ -70,6 +70,7 @@ export async function DELETE(
   }
 
   const imageId = Number(params.imageId);
+  const singleImageCheck = await getImageById(imageId);
 
   if (!imageId) {
     return NextResponse.json(
@@ -80,16 +81,23 @@ export async function DELETE(
     );
   }
 
-  const oneImage = await deleteImageById(imageId);
+  if (singleImageCheck && singleImageCheck.userId === user.id) {
+    const oneImage = await deleteImageById(imageId);
 
-  if (!oneImage) {
+    if (!oneImage) {
+      return NextResponse.json(
+        {
+          error: 'Image not found',
+        },
+        { status: 404 },
+      );
+    }
+
+    return NextResponse.json({ image: oneImage });
+  } else {
     return NextResponse.json(
-      {
-        error: 'Image not found',
-      },
-      { status: 404 },
+      { error: 'You cannot delete this image!' },
+      { status: 403 },
     );
   }
-
-  return NextResponse.json({ image: oneImage });
 }

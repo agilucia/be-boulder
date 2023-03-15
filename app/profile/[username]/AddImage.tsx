@@ -58,79 +58,69 @@ export default function AddImage(props: Props) {
   }
 
   return (
-    <main>
-      <h1>Share a special moment!</h1>
-      <p>{error}</p>
-      <form method="post" onSubmit={handleOnSubmit}>
-        <label>
-          Upload your image here:
-          <br />
-          <input onChange={handleOnChange} type="file" name="file" />
-        </label>
-        <p>Preview</p>
-        <img src={imageSrc} alt="User" />
-        <button>Upload</button>
-      </form>
-      {/* <form
-        onSubmit={async (event) => {
-          const userId = props.userId;
-          event.preventDefault();
-          const response = await fetch('api/images', {
-            method: 'POST',
-            body: JSON.stringify({
-              imageUrl: imageSrc,
-              caption,
-              userId,
-            }),
-          });
-          const data = await response.json();
+    <main className="flex flex-col items-center">
+      <div className="card card-compact w-96 bg-base-100 shadow-xl">
+        <div className="card-body">
+          <h1 className="card-title">Share a special moment!</h1>
+          <p>{error}</p>
+          <form method="post" onSubmit={handleOnSubmit}>
+            <label>
+              Upload your image here:
+              <br />
+              <input onChange={handleOnChange} type="file" name="file" />
+            </label>
+            <p>Preview</p>
+            <figure>
+              <img src={imageSrc} alt="User" />
+            </figure>
+            <div className="card-actions justify-end">
+              <button className="btn btn-primary">Upload</button>
+            </div>
+          </form>
 
-          if ('errors' in data) {
-            setErrors(data.errors);
-            return;
-          }
+          <label htmlFor="caption">Caption</label>
+          <input
+            value={caption}
+            onChange={(event) => setCaption(event.currentTarget.value)}
+          />
+          <div className="card-actions justify-end">
+            <button
+              className="btn btn-primary"
+              onClick={async (event) => {
+                // const userId = props.userId;
+                const imageUrl = imageSrc;
+                event.preventDefault();
+                const response = await fetch('/api/images', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    imageUrl,
+                    caption,
+                  }),
+                });
+                const data = await response.json();
 
-          // router.replace(`/profile/${username}`);
-          setImages([...images, data.image]);
-          router.refresh();
-        }}
-      > */}
-      <label htmlFor="caption">Caption</label>
-      <input
-        value={caption}
-        onChange={(event) => setCaption(event.currentTarget.value)}
-      />
-      <button
-        onClick={async (event) => {
-          // const userId = props.userId;
-          const imageUrl = imageSrc;
-          event.preventDefault();
-          const response = await fetch('/api/images', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              imageUrl,
-              caption,
-            }),
-          });
-          const data = await response.json();
+                if (data.error) {
+                  setError(data.error);
+                  return;
+                }
 
-          if (data.error) {
-            setError(data.error);
-            return;
-          }
-
-          // router.replace(`/profile/${username}`);
-          setImages([...images, data.image]);
-          router.refresh();
-        }}
-      >
-        Post image
-      </button>
-      {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
-      {/* </form> */}
+                // router.replace(`/profile/${username}`);
+                setImages([...images, data.image]);
+                router.refresh();
+              }}
+            >
+              Post image
+            </button>
+          </div>
+          {typeof error === 'string' && (
+            <div style={{ color: 'red' }}>{error}</div>
+          )}
+          {/* </form> */}
+        </div>
+      </div>
     </main>
   );
 }
