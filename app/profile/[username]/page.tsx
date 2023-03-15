@@ -2,7 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getFavoriteByIdWithLocationInfo } from '../../../database/favorites';
+import { getImagesByUserId } from '../../../database/images';
 import { getUserByUsername } from '../../../database/users';
+import AddImage from './AddImage';
 import RemoveFavorite from './userfavorites/RemoveFavorite';
 
 type Props = {
@@ -17,6 +19,7 @@ export default async function UserProfile({ params }: Props) {
   }
 
   // const favorites = await getFavoriteByIdWithLocationInfo(user.id);
+  const images = await getImagesByUserId(user.id);
 
   return (
     <main className="flex flex-col items-center">
@@ -27,6 +30,7 @@ export default async function UserProfile({ params }: Props) {
       <Link href={`/profile/${user.username}/userfavorites`}>
         <b>SEE MY FAVORITES</b>
       </Link>
+      <AddImage images={images} userId={user.id} />
 
       {/* <span>
         {favorites.map((favorite) => {

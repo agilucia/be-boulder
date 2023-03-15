@@ -7,7 +7,7 @@ import { getUserBySessionToken } from '../../../database/users';
 const imageType = z.object({
   imageUrl: z.string(),
   caption: z.string(),
-  userId: z.number(),
+  // userId: z.number(),
 });
 
 export type ImagesResponseBodyPost =
@@ -47,7 +47,7 @@ export async function POST(
   const newImage = await createImage(
     result.data.imageUrl,
     result.data.caption,
-    result.data.userId,
+    user.id,
   );
 
   if (!newImage) {

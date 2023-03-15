@@ -17,6 +17,20 @@ export const getImages = cache(async () => {
   return images;
 });
 
+// get images for single user
+export const getImagesByUserId = cache(async (userId: number) => {
+  const images = await sql<Image[]>`
+  SELECT
+    *
+  FROM
+    images
+  WHERE
+    images.user_id = ${userId}
+  `;
+
+  return images;
+});
+
 // get single image by id
 export const getImageById = cache(async (id: number) => {
   const [image] = await sql<Image[]>`
