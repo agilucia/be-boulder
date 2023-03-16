@@ -3,21 +3,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
-import { getFavoriteByIdWithLocationInfo } from '../../../database/favorites';
-import { getImagesByUserId } from '../../../database/images';
+import { getImageById, getImagesByUserId } from '../../../database/images';
 import {
   getUserBySessionToken,
   getUserByUsername,
 } from '../../../database/users';
 import AddImage from './AddImage';
 import RemoveImage from './RemoveImage';
-import RemoveFavorite from './userfavorites/RemoveFavorite';
 
 type Props = {
-  params: { username: string; userId: number };
+  params: { username: string; userId: number; imageId: number };
 };
 
-export default async function UserProfile({ params }: Props) {
+export default async function UserProfile(props: Props) {
   // this is a protected Route Handler
   // 1. get the session token from the cookie
   const cookieStore = cookies();
@@ -34,13 +32,12 @@ export default async function UserProfile({ params }: Props) {
     );
   }
 
-  const user = await getUserByUsername(params.username);
+  const user = await getUserByUsername(props.params.username);
 
   if (!user) {
     notFound();
   }
 
-  // const favorites = await getFavoriteByIdWithLocationInfo(user.id);
   const images = await getImagesByUserId(user.id);
 
   return (
@@ -64,52 +61,30 @@ export default async function UserProfile({ params }: Props) {
               key={`user-${image.userId}`}
               className="card w-96 bg-base-100 shadow-xl my-2 items-center"
             >
-              <figure className="px-10 pt-10">
-                <Image
-                  src={`${image.imageUrl}`}
-                  alt="user generated image"
-                  width="200"
-                  height="200"
-                />
-              </figure>
-              <div className="card-body items-center text-center">
-                <p>{image.caption}</p>
-              </div>
-              <div className="mb-2 -mt-5">
-                <RemoveImage image={image} />
-              </div>
-            </div>
-          );
-        })}
-      </span>
-      {/* <span>
-        {favorites.map((favorite) => {
-          return (
-            <div
-              key={`location-${favorite.locationId}`}
-              className="card w-96 bg-base-100 shadow-xl my-2 items-center"
-            >
-              <Link href={`/locations/${favorite.locationId}`}>
+              <Link href={`/profile/${user.username}/${image.id}`}>
                 <figure className="px-10 pt-10">
                   <Image
-                    src={`/images/${favorite.locationId}.jpg`}
-                    alt="location image"
+                    src={`${image.imageUrl}`}
+                    alt="user generated image"
                     width="200"
                     height="200"
                   />
                 </figure>
                 <div className="card-body items-center text-center">
-                  <h3 className="card-title">{favorite.locationName}</h3>
-                  <p>{favorite.locationOpeningHours}</p>
+                  <p>{image.caption}</p>
                 </div>
               </Link>
               <div className="mb-2 -mt-5">
-                <RemoveFavorite favorite={favorite} />
+                {currentUser.id === user.id ? (
+                  <RemoveImage image={image} />
+                ) : (
+                  ''
+                )}
               </div>
             </div>
           );
         })}
-      </span> */}
+      </span>
     </main>
   );
 }
