@@ -9,7 +9,7 @@ import {
   getUserBySessionToken,
   getUserByUsername,
 } from '../../../database/users';
-import AddImage from './AddImage';
+import AddImage from './bioinfos/AddImage';
 import BioForm from './bioinfos/BioForm';
 import RemoveImage from './RemoveImage';
 
@@ -56,20 +56,20 @@ export default async function UserProfile(props: Props) {
         })}
       </span>
       {currentUser.id === user.id ? (
-        <Link href={`/profile/${user.username}/bioinfos`}>Edit bio</Link>
+        <Link href={`/profile/${user.username}/bioinfos`}>Edit profile</Link>
       ) : (
         // <BioForm bios={bios} userId={user.id} />
         ''
       )}
       {/* <p>id: {user.id}</p> */}
       <Link href={`/profile/${user.username}/userfavorites`}>
-        <b>SEE MY FAVORITES</b>
+        see my favorites
       </Link>
-      {currentUser.id === user.id ? (
+      {/* {currentUser.id === user.id ? (
         <AddImage images={images} userId={user.id} />
       ) : (
         ''
-      )}
+      )} */}
       <span>
         {images.map((image) => {
           return (
