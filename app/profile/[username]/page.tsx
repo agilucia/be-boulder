@@ -3,12 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
+import { getBioByUserId } from '../../../database/bios';
 import { getImageById, getImagesByUserId } from '../../../database/images';
 import {
   getUserBySessionToken,
   getUserByUsername,
 } from '../../../database/users';
 import AddImage from './AddImage';
+import BioForm from './bioinfos/BioForm';
 import RemoveImage from './RemoveImage';
 
 type Props = {
@@ -40,11 +42,25 @@ export default async function UserProfile(props: Props) {
 
   const images = await getImagesByUserId(user.id);
 
+  const bios = await getBioByUserId(user.id);
+
   return (
     <main className="flex flex-col items-center">
       <h1>
         <b>{user.username}</b>
       </h1>
+      <p>About me:</p>
+      <span>
+        {bios.map((bio) => {
+          return <div key={`bio-${bio.userId}`}>{bio.content}</div>;
+        })}
+      </span>
+      {currentUser.id === user.id ? (
+        <Link href={`/profile/${user.username}/bioinfos`}>Edit bio</Link>
+      ) : (
+        // <BioForm bios={bios} userId={user.id} />
+        ''
+      )}
       {/* <p>id: {user.id}</p> */}
       <Link href={`/profile/${user.username}/userfavorites`}>
         <b>SEE MY FAVORITES</b>

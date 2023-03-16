@@ -9,7 +9,7 @@ type Props = {
   params: { username: string; userId: number };
 };
 
-export default async function UserFavoritse({ params }: Props) {
+export default async function UserFavorites({ params }: Props) {
   const user = await getUserByUsername(params.username);
 
   if (!user) {
