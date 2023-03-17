@@ -156,15 +156,7 @@ export default async function RootLayout(props: Props) {
                       {user.username}
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href="/logout"
-                      prefetch={false}
-                      className="btn btn-ghost normal-case text-lg"
-                    >
-                      logout
-                    </Link>
-                  </li>
+
                   <li>
                     <Link
                       href="/users"
@@ -179,6 +171,15 @@ export default async function RootLayout(props: Props) {
                       className="btn btn-ghost normal-case text-lg"
                     >
                       lobby
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/logout"
+                      prefetch={false}
+                      className="btn btn-ghost normal-case text-lg"
+                    >
+                      logout
                     </Link>
                   </li>
                 </>

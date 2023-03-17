@@ -20,49 +20,10 @@ export default function ConversationForm(props: Props) {
 
   return (
     <main>
-      <input
-        value={content}
-        placeholder="Send a message"
-        className="input input-bordered w-full max-w-xs"
-        onChange={(event) => setContent(event.currentTarget.value)}
-      />
-      <button
-        className="btn btn-xs btn-primary"
-        onClick={async () => {
-          const userName = props.userName;
-          // const userId = props.userId;
-          const response = await fetch('/api/conversations', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              content,
-              // userId,
-              userName,
-            }),
-          });
-
-          const data = await response.json();
-
-          if (data.error) {
-            setError(data.error);
-            return;
-          }
-          // you should use this
-          // router.refresh()
-
-          setConversations([...conversations, data.conversation]);
-          setContent('');
-        }}
-      >
-        Send
-      </button>
-      {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
-      <div>
+      <div className="chat chat-end">
         {conversations.map((conversation) => (
-          <div key={`conversation-${conversation.id}`}>
-            <div>
+          <div key={`conversation-${conversation.id}`} className="chat-bubble">
+            <div className="chat-header">
               <Link href={`/profile/${conversation.userName}`}>
                 <b>{conversation.userName}:</b>
               </Link>
@@ -169,6 +130,45 @@ export default function ConversationForm(props: Props) {
           </div>
         ))}
       </div>
+      <input
+        value={content}
+        placeholder="Send a message"
+        className="input input-bordered w-full max-w-xs"
+        onChange={(event) => setContent(event.currentTarget.value)}
+      />
+      <button
+        className="btn btn-xs btn-primary"
+        onClick={async () => {
+          const userName = props.userName;
+          // const userId = props.userId;
+          const response = await fetch('/api/conversations', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              content,
+              // userId,
+              userName,
+            }),
+          });
+
+          const data = await response.json();
+
+          if (data.error) {
+            setError(data.error);
+            return;
+          }
+          // you should use this
+          // router.refresh()
+
+          setConversations([...conversations, data.conversation]);
+          setContent('');
+        }}
+      >
+        Send
+      </button>
+      {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
     </main>
   );
 }

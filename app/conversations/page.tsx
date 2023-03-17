@@ -33,7 +33,11 @@ export default async function Conversations(props: Props) {
   const conversations = await getConversations();
   return (
     <main>
-      <h1>Lobby</h1>
+      <div className="flex flex-col items-center">
+        <h1>
+          <b>Lobby</b>
+        </h1>
+      </div>
       <ConversationForm
         conversations={conversations}
         userId={user.id}
