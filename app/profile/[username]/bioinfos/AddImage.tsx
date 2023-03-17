@@ -71,7 +71,7 @@ export default function AddImage(props: Props) {
             </label>
             <p>Preview</p>
             <figure>
-              <img src={imageSrc} alt="User" />
+              <img src={imageSrc} alt="User upload" />
             </figure>
             <div className="card-actions justify-end">
               <button className="btn btn-primary">Upload</button>

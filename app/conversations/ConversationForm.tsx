@@ -1,23 +1,20 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-import { CommentWithUsername } from '../../../database/comments';
+import { Conversation } from '../../database/conversations';
 
 type Props = {
-  comments: CommentWithUsername[];
-  locationId: number;
+  conversations: Conversation[];
   userId: number;
   userName: string;
 };
 
-// original version
-
-export default function CommentForm(props: Props) {
-  const [comments, setComments] = useState<CommentWithUsername[]>(
-    props.comments,
+export default function ConversationForm(props: Props) {
+  const [conversations, setConversations] = useState<Conversation[]>(
+    props.conversations,
   );
   const [idOnEditMode, setIdOnEditMode] = useState<number>();
-  const [content, setContent] = useState<string>('');
+  const [content, setContent] = useState<string>();
   const [editContent, setEditContent] = useState<string>('');
   const [error, setError] = useState<string>();
 
@@ -25,24 +22,22 @@ export default function CommentForm(props: Props) {
     <main>
       <input
         value={content}
-        placeholder="Leave a comment"
+        placeholder="Send a message"
         className="input input-bordered w-full max-w-xs"
         onChange={(event) => setContent(event.currentTarget.value)}
       />
       <button
         className="btn btn-xs btn-primary"
         onClick={async () => {
-          const locationId = props.locationId;
           const userName = props.userName;
           // const userId = props.userId;
-          const response = await fetch('/api/comments', {
+          const response = await fetch('/api/conversations', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
               content,
-              locationId,
               // userId,
               userName,
             }),
@@ -57,23 +52,23 @@ export default function CommentForm(props: Props) {
           // you should use this
           // router.refresh()
 
-          setComments([...comments, data.comment]);
+          setConversations([...conversations, data.conversation]);
           setContent('');
         }}
       >
-        Comment
+        Send
       </button>
       {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
       <div>
-        {comments.map((comment) => (
-          <div key={`comment-${comment.id}`}>
+        {conversations.map((conversation) => (
+          <div key={`conversation-${conversation.id}`}>
             <div>
-              <Link href={`/profile/${comment.userName}`}>
-                <b>{comment.userName}:</b>
+              <Link href={`/profile/${conversation.userName}`}>
+                <b>{conversation.userName}:</b>
               </Link>
             </div>
-            {idOnEditMode !== comment.id ? (
-              comment.content
+            {idOnEditMode !== conversation.id ? (
+              conversation.content
             ) : (
               <input
                 value={editContent}
@@ -83,12 +78,12 @@ export default function CommentForm(props: Props) {
             {/* {''} */}
 
             <div>
-              {props.userId === comment.userId ? (
+              {props.userId === conversation.userId ? (
                 <button
                   className="btn btn-circle btn-xs mx-2.5"
                   onClick={async () => {
                     const response = await fetch(
-                      `/api/comments/${comment.id}`,
+                      `/api/conversations/${conversation.id}`,
                       {
                         method: 'DELETE',
                       },
@@ -101,10 +96,10 @@ export default function CommentForm(props: Props) {
                       return;
                     }
 
-                    setComments(
-                      comments.filter(
-                        (commentOnState) =>
-                          commentOnState.id !== data.comment.id,
+                    setConversations(
+                      conversations.filter(
+                        (conversationOnState) =>
+                          conversationOnState.id !== data.conversation.id,
                       ),
                     );
                   }}
@@ -115,13 +110,13 @@ export default function CommentForm(props: Props) {
                 <div />
               )}
 
-              {props.userId === comment.userId &&
-              idOnEditMode !== comment.id ? (
+              {props.userId === conversation.userId &&
+              idOnEditMode !== conversation.id ? (
                 <button
                   className="btn btn-xs"
                   onClick={() => {
-                    setIdOnEditMode(comment.id);
-                    setEditContent(comment.content);
+                    setIdOnEditMode(conversation.id);
+                    setEditContent(conversation.content);
                     console.log('test');
                   }}
                 >
@@ -130,13 +125,13 @@ export default function CommentForm(props: Props) {
               ) : (
                 <div />
               )}
-              {props.userId === comment.userId &&
-              idOnEditMode === comment.id ? (
+              {props.userId === conversation.userId &&
+              idOnEditMode === conversation.id ? (
                 <button
                   className="btn btn-xs"
                   onClick={async () => {
                     const response = await fetch(
-                      `/api/comments/${comment.id}`,
+                      `/api/conversation/${conversation.id}`,
                       {
                         method: 'PUT',
                         headers: {
@@ -156,11 +151,11 @@ export default function CommentForm(props: Props) {
                     }
                     setIdOnEditMode(undefined);
 
-                    setComments(
-                      comments.map((commentOnState) => {
-                        return commentOnState.id !== data.comment.id
-                          ? commentOnState
-                          : data.comment;
+                    setConversations(
+                      conversations.map((conversationOnState) => {
+                        return conversationOnState.id !== data.conversation.id
+                          ? conversationOnState
+                          : data.conversation;
                       }),
                     );
                   }}

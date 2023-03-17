@@ -173,6 +173,14 @@ export default async function RootLayout(props: Props) {
                       users
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      href="/conversations"
+                      className="btn btn-ghost normal-case text-lg"
+                    >
+                      lobby
+                    </Link>
+                  </li>
                 </>
               ) : (
                 <>
