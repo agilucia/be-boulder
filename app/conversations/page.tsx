@@ -1,8 +1,8 @@
 import { cookies } from 'next/headers';
-import { notFound, redirect } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
 import { getConversations } from '../../database/conversations';
-import { getUserBySessionToken, getUserByUsername } from '../../database/users';
+import { getUserBySessionToken } from '../../database/users';
 import ConversationForm from './ConversationForm';
 
 type Props = {
