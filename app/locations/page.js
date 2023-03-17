@@ -43,9 +43,19 @@ export default async function Locations() {
                 </figure>
                 <div className="card-body items-center text-center">
                   <h3 className="card-title">{location.name}</h3>
+
                   <p>{location.openingHours}</p>
                 </div>
               </Link>
+              <a href={location.instagram}>
+                <Image
+                  src="/Instagram_logo.svg.webp"
+                  alt="instagram"
+                  width="25"
+                  height="25"
+                  className="m-3"
+                />
+              </a>
             </div>
           );
         })}

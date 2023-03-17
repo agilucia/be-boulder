@@ -82,6 +82,14 @@ export default async function LocationPage(props: Props) {
               userId={user.id}
             />
           </h1>
+          <a href={singleLocation.instagram}>
+            <Image
+              src="/Instagram_logo.svg.webp"
+              alt="instagram"
+              width="25"
+              height="25"
+            />
+          </a>
           <p>{singleLocation.description}</p>
           <div>
             <b>Address:</b> {singleLocation.address}

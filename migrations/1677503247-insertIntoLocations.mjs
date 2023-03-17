@@ -4,6 +4,7 @@ const locations = [
     name: 'KI Kletterzentrum Innsbruck',
     address: 'Matthias-Schmid-Strasse 12c, 6020 Innsbruck',
     website: 'https://www.kletterzentrum-innsbruck.at/',
+    instagram: 'https://www.instagram.com/kletterzentruminnsbruck/',
     price: 'Entrance fee adults: 13,80 EUR',
     opening_hours: 'Mon - Fri: 9am - 11pm , Sat & Sun: 9am - 10pm',
     description:
@@ -16,6 +17,8 @@ const locations = [
     name: 'Blockfabrik',
     address: 'Schlossgasse 10-12, 1050 Wien',
     website: 'https://www.blockfabrik.at/',
+    instagram:
+      'https://www.instagram.com/blockfabrik/?utm_source=ig_embed&ig_rid=8be207ce-109f-4427-b286-6f279b3ffff9',
     price: 'Entrance fee adults: 9,50 EUR',
     opening_hours: 'Mon - Sun: 10am - 10pm',
     description:
@@ -28,6 +31,8 @@ const locations = [
     name: 'Boulderbar Salzburg',
     address: 'Richard-Kürth-Strasse 9, 5020 Salzburg',
     website: 'https://boulderbar.net/salzburg',
+    instagram:
+      'https://www.instagram.com/boulderbarsalzburg/?utm_source=ig_embed&ig_rid=ef952b16-330f-4d9e-9c10-b952daae9c57',
     price: 'Entrance fee adults: 11,90 EUR',
     opening_hours: 'Mon - Fri 9am - 10:30pm, Sat & Sun 9am - 8pm',
     description:
@@ -40,6 +45,8 @@ const locations = [
     name: 'BLOC House',
     address: 'Puchstrasse 17-21, 8020 Graz',
     website: 'https://bloc-house.at/',
+    instagram:
+      'https://www.instagram.com/bloc_house/?utm_source=ig_embed&ig_rid=f02e1ddc-4ce9-4b8f-ae76-01ef7282d89f',
     price: 'Entrance fee adults: 10,40 EUR',
     opening_hours: 'Mon - Fri: 7am - 1pm & 4pm - 10pm, Sat & Sun: 9am - 10pm',
     description:
@@ -52,6 +59,8 @@ const locations = [
     name: 'Kletterhalle Wien',
     address: 'Erzherzog Karl Strasse 108, 1220 Wien',
     website: 'https://www.kletterhallewien.at/',
+    instagram:
+      'https://www.instagram.com/kletterhallewien/?utm_source=ig_embed&ig_rid=b8ae3317-ddd8-45ff-9409-1b93935218b0',
     price: 'Entrance fee adults: 14,50 EUR',
     opening_hours: 'Mon - Fri 9am - 10:30pm, Sat & Sun 9am - 8pm',
     description:
@@ -64,6 +73,8 @@ const locations = [
     name: 'Edelweiss Center',
     address: 'Walfischgasse 12/2, 1010 Wien',
     website: 'https://www.edelweiss-center.at/',
+    instagram:
+      'https://www.instagram.com/alpenvereinedelweiss/?utm_source=ig_embed&ig_rid=306281a7-73eb-4402-86b9-72da6fa4dd45',
     price: 'Entrance fee adults: 5,90 EUR per hour',
     opening_hours: 'Mon - Fri: 12pm - 10:30pm, Sat & Sun: 9am - 7pm',
     description:
@@ -76,6 +87,8 @@ const locations = [
     name: 'Kletterhalle Salzburg',
     address: 'Wasserfeldstrasse 23, 5020 Salzburg',
     website: 'https://kletterhallesalzburg.at/',
+    instagram:
+      'https://www.instagram.com/kletterhallesalzburg/?utm_source=ig_embed&ig_rid=0e61c132-d5ce-45d6-b24d-2e9b8eaa5446',
     price: 'Entrance fee adults: 15,50 EUR',
     opening_hours: 'Mon - Fri: 10am - 10pm, Sat & Sun: 10am - 8pm',
     description:
@@ -88,6 +101,8 @@ const locations = [
     name: 'Boulderclub Graz',
     address: 'Triester Str. 391, 8055 Graz',
     website: 'https://www.boulderclub.at/',
+    instagram:
+      'https://www.instagram.com/boulderclubgraz/?utm_source=ig_embed&ig_rid=a3e52345-18dc-44a0-a761-4fa5401b066f',
     price: 'Entrance fee adults: 13,50 EUR',
     opening_hours: 'Mon - Fri: 10am - 10pm, Sat & Sun: 10am - 8pm',
     description:
@@ -100,6 +115,8 @@ const locations = [
     name: 'Boulderhalle Salzburg',
     address: 'Wasserfeldstr. 23, 5020 Salzburg',
     website: 'https://www.boulderhalle-salzburg.at/',
+    instagram:
+      'https://www.instagram.com/boulderhallesalzburg/?utm_source=ig_embed&ig_rid=7d483612-1667-42b1-a12b-bb5c61e79116',
     price: 'Entrance fee adults: 11,50 EUR',
     opening_hours: 'Mon - Fri: 10am - 10pm, Sat & Sun: 10am - 8pm',
     description:
@@ -112,6 +129,8 @@ const locations = [
     name: 'boulderbar Wien - Hannovergasse',
     address: 'Hannovergasse 21, 1200 Wien',
     website: 'https://boulderbar.net/hannovergasse',
+    instagram:
+      'https://www.instagram.com/boulderbar/?utm_source=ig_embed&ig_rid=8855c814-4601-4075-b4a5-cfaf41d2924a',
     price: 'Entrance fee adults: 11,90 EUR',
     opening_hours:
       'Mon, Wed, Thu, Fri: 11am - 11pm, Tue: 7:30am - 11pm, Sat & Sun: 9am - 8pm',
@@ -125,6 +144,8 @@ const locations = [
     name: 'boulderbar Wien - Wienerberg',
     address: 'Gutheil-Schoder-Gasse 8, 1100 Wien',
     website: 'https://boulderbar.net/wienerberg',
+    instagram:
+      'https://www.instagram.com/boulderbar/?utm_source=ig_embed&ig_rid=8855c814-4601-4075-b4a5-cfaf41d2924a',
     price: 'Entrance fee adults: 11,90 EUR',
     opening_hours:
       'Mon, Tue, Thu, Fri: 11am - 11pm, Wed: 7:30am - 11pm, Sat & Sun: 9am - 8pm',
@@ -138,6 +159,8 @@ const locations = [
     name: 'boulderbar Wien - Hauptbahnhof',
     address: 'Maria-Lassnig-Strasse 18/Tür 2, 1100 Wien',
     website: 'https://boulderbar.net/hauptbahnhof/boulderbar-hauptbahnhof',
+    instagram:
+      'https://www.instagram.com/boulderbar/?utm_source=ig_embed&ig_rid=8855c814-4601-4075-b4a5-cfaf41d2924a',
     price: 'Entrance fee adults: 11,90 EUR',
     opening_hours:
       'Mon, Tue, Wed, Fri: 10am - 10pm, Thu: 7:30am - 10pm, Sat & Sun: 9am - 8pm',
@@ -151,6 +174,8 @@ const locations = [
     name: 'Steinblock Imst',
     address: 'Bundesstrasse 1a, 6460 Gemeinde Imst',
     website: 'https://steinblock.at/imst/',
+    instagram:
+      'https://www.instagram.com/steinblock_boulderhalle/?utm_source=ig_embed&ig_rid=c31e19fb-1a1f-441a-ba04-2cbb78015165',
     price: 'Entrance fee adults: 12,80 EUR',
     opening_hours: 'Mon - Fri: 10am - 10pm, Sat & Sun: 9am - 7pm',
     description:
@@ -163,6 +188,8 @@ const locations = [
     name: 'Steinblock Dornbirn',
     address: 'Eisengasse 42, 6850 Dornbirn',
     website: 'https://steinblock.at/dornbirn/',
+    instagram:
+      'https://www.instagram.com/steinblock_boulderhalle/?utm_source=ig_embed&ig_rid=c31e19fb-1a1f-441a-ba04-2cbb78015165',
     price: 'Entrance fee adults: 13,80 EUR',
     opening_hours: 'Mon - Fri: 10am - 10:30pm, Sat & Sun: 1:30pm - 8pm',
     description:
@@ -175,6 +202,8 @@ const locations = [
     name: 'Steinblock Rankweil',
     address: 'Alemannenstrasse 49, 6830 Rankweil',
     website: 'https://steinblock.at/rankweil/',
+    instagram:
+      'https://www.instagram.com/steinblock_boulderhalle/?utm_source=ig_embed&ig_rid=c31e19fb-1a1f-441a-ba04-2cbb78015165',
     price: 'Entrance fee adults: 12,80 EUR',
     opening_hours: 'Mon - Fri: 10am - 10:30pm, Sat & Sun: 1:30pm - 8pm',
     description:
@@ -187,6 +216,8 @@ const locations = [
     name: 'Boulderama',
     address: 'Raiffeisenstrasse 12, 9020 Klagenfurt am Wörthersee',
     website: 'https://boulderama.at/',
+    instagram:
+      'https://www.instagram.com/boulderama_klagenfurt/?utm_source=ig_embed&ig_rid=0c3c24ad-afef-4110-82c2-1b730210155f',
     price: 'Entrance fee adults: 14 EUR',
     opening_hours: 'Mon, Wed, Fri: 3pm - 10pm, Tue, Thu, Sat, Sun: 10am - 10pm',
     description:
@@ -199,6 +230,8 @@ const locations = [
     name: 'Bigwall Bouldering',
     address: 'Pottendorfer Str. 29, 2700 Wiener Neustadt',
     website: 'https://www.bigwall-bouldering.at/',
+    instagram:
+      'https://www.instagram.com/bigwallbouldering/?utm_source=ig_embed&ig_rid=adaa89a4-4c3d-4935-863e-93527dca5351',
     price: 'Entrance fee adults: 10,50 EUR',
     opening_hours:
       'Mon, Tue, Wed, Fri: 10am - 10pm, Thu: 7am - 10pm, Fri: 10am - 10pm, Sat & Sun: 10am - 9pm',
@@ -212,6 +245,8 @@ const locations = [
     name: 'Kletterhalle Villach',
     address: 'Italiener Str. 54, 9500 Villach',
     website: 'http://kletterhallevillach.at/',
+    instagram:
+      'https://www.instagram.com/kletterhallevillach/?utm_source=ig_embed&ig_rid=5ea3d911-e1dc-4b85-8ad9-b2b41f1d1116',
     price: 'Entrance fee adults: 13,50 EUR',
     opening_hours:
       'Mon: 3pm - 10pm, Tue: 9am - 1pm & 4:30pm - 10pm, Wed: 3pm - 10pm, Thu: 9am - 1pm & 4:30pm - 10pm, Fri: 3pm - 10pm, Sat: 10am - 10pm, Sun: 10am - 2pm',
@@ -225,6 +260,8 @@ const locations = [
     name: 'Block Monkey',
     address: 'Im Letten 6, 6800 Feldkirch',
     website: 'https://www.blockmonkey.at/',
+    instagram:
+      'https://www.instagram.com/block__monkey/?utm_source=ig_embed&ig_rid=9debbcdf-011c-459e-aa59-64a92c8363a1',
     price: 'Entrance fee adults: 11 EUR',
     opening_hours: 'Mon - Fri: 2pm - 10pm, Sat & Sun: 10am - 10pm',
     description:
@@ -241,6 +278,7 @@ export async function up(sql) {
       'name',
       'address',
       'website',
+      'instagram',
       'price',
       'opening_hours',
       'description',

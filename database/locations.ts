@@ -6,6 +6,7 @@ export type Location = {
   name: string;
   address: string;
   website: string;
+  instagram: string;
   price: string;
   openingHours: string;
   description: string;
@@ -34,6 +35,7 @@ export const createLocation = cache(
     name: string,
     address: string,
     website: string,
+    instagram: string,
     price: string,
     openingHours: string,
     description: string,
@@ -42,9 +44,9 @@ export const createLocation = cache(
   ) => {
     const [location] = await sql<Location[]>`
     INSERT INTO locations
-      (name, address, website, price, openingHours, description, lat, lng)
+      (name, address, website, instagram, price, openingHours, description, lat, lng)
     VALUES
-      (${name}, ${address}, ${website}, ${price}, ${openingHours}, ${description}, ${lat}, ${lng})
+      (${name}, ${address}, ${website}, ${instagram}, ${price}, ${openingHours}, ${description}, ${lat}, ${lng})
     RETURNING *
     `;
     return location;
@@ -58,6 +60,7 @@ export const updateLocationById = cache(
     name: string,
     address: string,
     website: string,
+    instagram: string,
     price: string,
     openingHours: string,
     description: string,
@@ -71,6 +74,7 @@ export const updateLocationById = cache(
       name = ${name},
       address = ${address},
       website = ${website},
+      instagram = ${instagram},
       price = ${price},
       openingHours = ${openingHours},
       description = ${description}

@@ -5,6 +5,7 @@ export async function up(sql) {
     name varchar(80) NOT NULL,
     address varchar(150) NOT NULL,
     website varchar(300) NOT NULL,
+    instagram varchar(500) NOT NULL,
     price varchar(100) NOT NULL,
     opening_hours varchar(150) NOT NULL,
     description varchar(1000) NOT NULL,
