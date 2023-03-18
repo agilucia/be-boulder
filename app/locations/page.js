@@ -18,7 +18,7 @@ export default async function Locations() {
   const locations = await getLocations();
   return (
     <main className="flex flex-col items-center">
-      <h1 className="text-xl">
+      <h1 className="text-xl text-primary">
         <b>BE BOULDER</b>
       </h1>
       <div>
@@ -29,7 +29,7 @@ export default async function Locations() {
           return (
             <div
               key={`location-${location.id}`}
-              className="card w-96 bg-base-100 shadow-xl my-2"
+              className="card w-96 bg-base-100 shadow-xl hover:shadow-primary my-2"
             >
               <Link href={`/locations/${location.id}`}>
                 <figure className="px-10 pt-10">
@@ -37,8 +37,8 @@ export default async function Locations() {
                     className="py-2"
                     src={`/images/${location.id}.jpg`}
                     alt={location.name}
-                    width="200"
-                    height="200"
+                    width="300"
+                    height="300"
                   />
                 </figure>
                 <div className="card-body items-center text-center">

@@ -63,13 +63,13 @@ export default async function LocationPage(props: Props) {
 
   return (
     <main className="flex flex-col items-center">
-      <div className="card w-96 bg-base-100 shadow-xl my-2">
+      <div className="card w-96 bg-base-100 shadow-xl shadow-primary my-2">
         <figure>
           <Image
             src={`/images/${singleLocation.id}.jpg`}
             alt={singleLocation.name}
-            width="300"
-            height="300"
+            width="350"
+            height="350"
             className="py-5"
           />
         </figure>

@@ -16,6 +16,9 @@ module.exports = {
       xl: '1440px',
     },
     extend: {},
+    fontFamily: {
+      sans: ['Permanent Marker', 'cursive'],
+    },
   },
   plugins: [require('daisyui')],
 };

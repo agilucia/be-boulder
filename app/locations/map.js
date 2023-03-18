@@ -49,6 +49,7 @@ export default function Map(props) {
 
   return (
     <MapContainer
+      className="card w-96 bg-base-100 shadow-xl my-2"
       center={position}
       zoom={7}
       scrollWheelZoom={true}
