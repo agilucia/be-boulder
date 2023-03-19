@@ -16,6 +16,8 @@ export default function AddImage(props: Props) {
   const [imageSrc, setImageSrc] = useState<string>('');
   const [uploadData, setUploadData] = useState<Blob>();
   const [error, setError] = useState<string>();
+  const [successUpload, setSuccessUpload] = useState(false);
+  const [success, setSuccess] = useState(false);
   const router = useRouter();
 
   function handleOnChange(changeEvent: React.ChangeEvent<HTMLInputElement>) {
@@ -55,6 +57,7 @@ export default function AddImage(props: Props) {
 
     setImageSrc(data.secure_url);
     setUploadData(data);
+    setSuccessUpload(true);
   }
 
   return (
@@ -76,6 +79,13 @@ export default function AddImage(props: Props) {
             <div className="card-actions justify-end">
               <button className="btn btn-primary">Upload</button>
             </div>
+            {successUpload && (
+              <div className="toast toast-top toast-center">
+                <div className="alert alert-success">
+                  <p>Image uploaded!</p>
+                </div>
+              </div>
+            )}
           </form>
 
           <label htmlFor="caption">Caption</label>
@@ -109,11 +119,19 @@ export default function AddImage(props: Props) {
 
                 // router.replace(`/profile/${username}`);
                 setImages([...images, data.image]);
+                setSuccess(true);
                 router.refresh();
               }}
             >
               Post image
             </button>
+            {success && (
+              <div className="toast toast-top toast-center">
+                <div className="alert alert-success">
+                  <p>Image posted!</p>
+                </div>
+              </div>
+            )}
           </div>
           {typeof error === 'string' && (
             <div style={{ color: 'red' }}>{error}</div>

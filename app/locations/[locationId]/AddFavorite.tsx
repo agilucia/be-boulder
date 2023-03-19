@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Favorite } from '../../../database/favorites';
 
@@ -12,6 +13,8 @@ export default function AddFavorite(props: Props) {
   const [favorites, setFavorites] = useState<Favorite[]>(props.favorites);
   // const [error, setError] = useState<string>();
   const [errors, setErrors] = useState<{ message: string }[]>([]);
+  const [success, setSuccess] = useState(false);
+  const router = useRouter();
 
   return (
     <main>
@@ -39,10 +42,20 @@ export default function AddFavorite(props: Props) {
           }
 
           setFavorites([...favorites, data.favorite]);
+          setSuccess(true);
+          router.refresh();
         }}
       >
         📌
       </button>
+      {success && (
+        <div className="toast toast-top toast-center">
+          <div className="alert alert-success">
+            <p>Saved!</p>
+          </div>
+        </div>
+      )}
+
       {errors.map((error) => (
         <div key={`error-${error.message}`}>{error.message}</div>
       ))}
