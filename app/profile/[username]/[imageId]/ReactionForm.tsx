@@ -21,50 +21,52 @@ export default function ReactionForm(props: Props) {
 
   return (
     <main>
-      <input
-        value={content}
-        placeholder="Leave a comment"
-        className="input input-bordered w-full max-w-xs"
-        onChange={(event) => setContent(event.currentTarget.value)}
-      />
-      <button
-        className="btn btn-xs"
-        onClick={async () => {
-          const imageId = props.imageId;
-          const userName = props.userName;
-          // const userId = props.userId;
-          const response = await fetch('/api/reactions', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              content,
-              imageId,
-              // userId,
-              userName,
-            }),
-          });
+      <div className="inline-flex  mb-2">
+        <input
+          value={content}
+          placeholder="Leave a comment"
+          className="input input-bordered w-full max-w-xs"
+          onChange={(event) => setContent(event.currentTarget.value)}
+        />
+        <button
+          className="btn btn-xs btn-primary self-end"
+          onClick={async () => {
+            const imageId = props.imageId;
+            const userName = props.userName;
+            // const userId = props.userId;
+            const response = await fetch('/api/reactions', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                content,
+                imageId,
+                // userId,
+                userName,
+              }),
+            });
 
-          const data = await response.json();
+            const data = await response.json();
 
-          if (data.error) {
-            setError(data.error);
-            return;
-          }
-          // you should use this
-          // router.refresh()
+            if (data.error) {
+              setError(data.error);
+              return;
+            }
+            // you should use this
+            // router.refresh()
 
-          setReactions([...reactions, data.reaction]);
-          setContent('');
-        }}
-      >
-        Comment
-      </button>
+            setReactions([...reactions, data.reaction]);
+            setContent('');
+          }}
+        >
+          Comment
+        </button>
+      </div>
       {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
       <div>
         {reactions.map((reaction) => (
-          <div key={`reaction-${reaction.id}`}>
+          <div key={`reaction-${reaction.id}`} className="inline-flex">
             <div>
               <Link href={`/profile/${reaction.userName}`}>
                 <b>{reaction.userName}:</b>
@@ -83,7 +85,7 @@ export default function ReactionForm(props: Props) {
             <div>
               {props.userId === reaction.userId ? (
                 <button
-                  className="btn btn-circle btn-xs mx-2.5"
+                  className="btn btn-circle btn-xs btn-primary mx-2.5"
                   onClick={async () => {
                     const response = await fetch(
                       `/api/reactions/${reaction.id}`,
@@ -116,7 +118,7 @@ export default function ReactionForm(props: Props) {
               {props.userId === reaction.userId &&
               idOnEditMode !== reaction.id ? (
                 <button
-                  className="btn btn-xs"
+                  className="btn btn-xs btn-primary"
                   onClick={() => {
                     setIdOnEditMode(reaction.id);
                     setEditContent(reaction.content);
@@ -131,7 +133,7 @@ export default function ReactionForm(props: Props) {
               {props.userId === reaction.userId &&
               idOnEditMode === reaction.id ? (
                 <button
-                  className="btn btn-xs"
+                  className="btn btn-xs btn-primary"
                   onClick={async () => {
                     const response = await fetch(
                       `/api/reactions/${reaction.id}`,

@@ -45,62 +45,77 @@ export default async function UserProfile(props: Props) {
   const bios = await getBioByUserId(user.id);
 
   return (
-    <main className="flex flex-col items-center">
-      <h1>
-        <b>{user.username}</b>
-      </h1>
-      <p>About me:</p>
-      <span>
-        {bios.map((bio) => {
-          return <div key={`bio-${bio.userId}`}>{bio.content}</div>;
-        })}
-      </span>
-      {currentUser.id === user.id ? (
-        <Link href={`/profile/${user.username}/bioinfos`}>Edit profile</Link>
-      ) : (
-        // <BioForm bios={bios} userId={user.id} />
-        ''
-      )}
-      {/* <p>id: {user.id}</p> */}
-      <Link href={`/profile/${user.username}/userfavorites`}>
-        see my favorites
-      </Link>
-      {/* {currentUser.id === user.id ? (
+    <main>
+      <div
+        className="-mt-6 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat "
+        style={{
+          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+        }}
+      >
+        <div className="flex flex-col items-center text-black">
+          <div className="card w-96 bg-base-100 shadow-xl my-2 items-center pb-4">
+            <h1 className="text-2xl text-black mt-4">
+              <b>{user.username}</b>
+            </h1>
+            <br />
+            <p>About me:</p>
+            <span>
+              {bios.map((bio) => {
+                return <div key={`bio-${bio.userId}`}>{bio.content}</div>;
+              })}
+            </span>
+            <br />
+            {currentUser.id === user.id ? (
+              <Link href={`/profile/${user.username}/bioinfos`}>
+                Edit profile 🖊️
+              </Link>
+            ) : (
+              // <BioForm bios={bios} userId={user.id} />
+              ''
+            )}
+            {/* <p>id: {user.id}</p> */}
+            <Link href={`/profile/${user.username}/userfavorites`}>
+              See my favorites 📌
+            </Link>
+            {/* {currentUser.id === user.id ? (
         <AddImage images={images} userId={user.id} />
       ) : (
         ''
       )} */}
-      <span>
-        {images.map((image) => {
-          return (
-            <div
-              key={`user-${image.userId}`}
-              className="card w-96 bg-base-100 shadow-xl my-2 items-center"
-            >
-              <Link href={`/profile/${user.username}/${image.id}`}>
-                <figure className="px-10 pt-10">
-                  <Image
-                    src={`${image.imageUrl}`}
-                    alt="user generated image"
-                    width="200"
-                    height="200"
-                  />
-                </figure>
-                <div className="card-body items-center text-center">
-                  <p>{image.caption}</p>
+          </div>
+          <span>
+            {images.map((image) => {
+              return (
+                <div
+                  key={`user-${image.userId}`}
+                  className="card w-96 bg-base-100 shadow-xl my-2 items-center"
+                >
+                  <Link href={`/profile/${user.username}/${image.id}`}>
+                    <figure className="px-10 pt-10">
+                      <Image
+                        src={`${image.imageUrl}`}
+                        alt="user generated image"
+                        width="200"
+                        height="200"
+                      />
+                    </figure>
+                    <div className="card-body items-center text-center text-black">
+                      <p>{image.caption}</p>
+                    </div>
+                  </Link>
+                  <div className="mb-2 -mt-5">
+                    {currentUser.id === user.id ? (
+                      <RemoveImage image={image} />
+                    ) : (
+                      ''
+                    )}
+                  </div>
                 </div>
-              </Link>
-              <div className="mb-2 -mt-5">
-                {currentUser.id === user.id ? (
-                  <RemoveImage image={image} />
-                ) : (
-                  ''
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </span>
+              );
+            })}
+          </span>
+        </div>
+      </div>
     </main>
   );
 }

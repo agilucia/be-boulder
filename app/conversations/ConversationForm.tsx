@@ -22,10 +22,13 @@ export default function ConversationForm(props: Props) {
     <main>
       <div className="chat chat-end">
         {conversations.map((conversation) => (
-          <div key={`conversation-${conversation.id}`} className="chat-bubble">
+          <div
+            key={`conversation-${conversation.id}`}
+            className="chat-bubble bg-white inline-flex text-black"
+          >
             <div className="chat-header">
               <Link href={`/profile/${conversation.userName}`}>
-                <b>{conversation.userName}:</b>
+                <b>{conversation.userName}: </b>
               </Link>
             </div>
             {idOnEditMode !== conversation.id ? (
@@ -41,7 +44,7 @@ export default function ConversationForm(props: Props) {
             <div>
               {props.userId === conversation.userId ? (
                 <button
-                  className="btn btn-circle btn-xs mx-2.5"
+                  className="btn btn-circle btn-xs btn-primary mx-2.5"
                   onClick={async () => {
                     const response = await fetch(
                       `/api/conversations/${conversation.id}`,
@@ -74,7 +77,7 @@ export default function ConversationForm(props: Props) {
               {props.userId === conversation.userId &&
               idOnEditMode !== conversation.id ? (
                 <button
-                  className="btn btn-xs"
+                  className="btn btn-xs btn-primary"
                   onClick={() => {
                     setIdOnEditMode(conversation.id);
                     setEditContent(conversation.content);
@@ -89,10 +92,10 @@ export default function ConversationForm(props: Props) {
               {props.userId === conversation.userId &&
               idOnEditMode === conversation.id ? (
                 <button
-                  className="btn btn-xs"
+                  className="btn btn-xs btn-primary"
                   onClick={async () => {
                     const response = await fetch(
-                      `/api/conversation/${conversation.id}`,
+                      `/api/conversations/${conversation.id}`,
                       {
                         method: 'PUT',
                         headers: {
@@ -130,44 +133,47 @@ export default function ConversationForm(props: Props) {
           </div>
         ))}
       </div>
-      <input
-        value={content}
-        placeholder="Send a message"
-        className="input input-bordered w-full max-w-xs"
-        onChange={(event) => setContent(event.currentTarget.value)}
-      />
-      <button
-        className="btn btn-xs btn-primary"
-        onClick={async () => {
-          const userName = props.userName;
-          // const userId = props.userId;
-          const response = await fetch('/api/conversations', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              content,
-              // userId,
-              userName,
-            }),
-          });
 
-          const data = await response.json();
+      <div className="flex items-center justify-center">
+        <input
+          value={content}
+          placeholder="Send a message"
+          className="input input-bordered w-full max-w-xs"
+          onChange={(event) => setContent(event.currentTarget.value)}
+        />
+        <button
+          className="btn btn-xs btn-primary"
+          onClick={async () => {
+            const userName = props.userName;
+            // const userId = props.userId;
+            const response = await fetch('/api/conversations', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                content,
+                // userId,
+                userName,
+              }),
+            });
 
-          if (data.error) {
-            setError(data.error);
-            return;
-          }
-          // you should use this
-          // router.refresh()
+            const data = await response.json();
 
-          setConversations([...conversations, data.conversation]);
-          setContent('');
-        }}
-      >
-        Send
-      </button>
+            if (data.error) {
+              setError(data.error);
+              return;
+            }
+            // you should use this
+            // router.refresh()
+
+            setConversations([...conversations, data.conversation]);
+            setContent('');
+          }}
+        >
+          Send
+        </button>
+      </div>
       {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
     </main>
   );

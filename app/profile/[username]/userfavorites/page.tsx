@@ -19,39 +19,48 @@ export default async function UserFavorites({ params }: Props) {
   const favorites = await getFavoriteByIdWithLocationInfo(user.id);
 
   return (
-    <main className="flex flex-col items-center">
-      <h1>
-        <b>MY FAVORITES:</b>
-      </h1>
+    <main>
+      <div
+        className="-mt-6 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat "
+        style={{
+          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+        }}
+      >
+        <div className="flex flex-col items-center">
+          <h1 className="text-2xl text-white mt-4">
+            <b>MY FAVORITES:</b>
+          </h1>
 
-      <span>
-        {favorites.map((favorite) => {
-          return (
-            <div
-              key={`location-${favorite.locationId}`}
-              className="card w-96 bg-base-100 shadow-xl my-2 items-center"
-            >
-              <Link href={`/locations/${favorite.locationId}`}>
-                <figure className="px-10 pt-10">
-                  <Image
-                    src={`/images/${favorite.locationId}.jpg`}
-                    alt="location image"
-                    width="200"
-                    height="200"
-                  />
-                </figure>
-                <div className="card-body items-center text-center">
-                  <h3 className="card-title">{favorite.locationName}</h3>
-                  <p>{favorite.locationOpeningHours}</p>
+          <span>
+            {favorites.map((favorite) => {
+              return (
+                <div
+                  key={`location-${favorite.locationId}`}
+                  className="card w-96 bg-base-100 shadow-xl my-2 items-center"
+                >
+                  <Link href={`/locations/${favorite.locationId}`}>
+                    <figure className="px-10 pt-10">
+                      <Image
+                        src={`/images/${favorite.locationId}.jpg`}
+                        alt="location image"
+                        width="200"
+                        height="200"
+                      />
+                    </figure>
+                    <div className="card-body items-center text-center">
+                      <h3 className="card-title">{favorite.locationName}</h3>
+                      <p>{favorite.locationOpeningHours}</p>
+                    </div>
+                  </Link>
+                  <div className="mb-2 -mt-5">
+                    <RemoveFavorite favorite={favorite} />
+                  </div>
                 </div>
-              </Link>
-              <div className="mb-2 -mt-5">
-                <RemoveFavorite favorite={favorite} />
-              </div>
-            </div>
-          );
-        })}
-      </span>
+              );
+            })}
+          </span>
+        </div>
+      </div>
     </main>
   );
 }

@@ -1,8 +1,12 @@
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Locations',
-  description: 'Look at the map and find the nearest bouldering locations',
+  title: 'BE BOULDER',
+  description:
+    'Discover bouldering locations in Austria on a map and get the most important informations.',
+  icons: {
+    shortcut: '/icon_3.svg',
+  },
 };
 
 export default function Home() {

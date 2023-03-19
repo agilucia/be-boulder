@@ -62,52 +62,61 @@ export default async function LocationPage(props: Props) {
   const favorites = await getFavorites(singleLocation.id);
 
   return (
-    <main className="flex flex-col items-center">
-      <div className="card w-96 bg-base-100 shadow-xl shadow-primary my-2">
-        <figure>
-          <Image
-            src={`/images/${singleLocation.id}.jpg`}
-            alt={singleLocation.name}
-            width="350"
-            height="350"
-            className="py-5"
-          />
-        </figure>
-        <div className="card-body">
-          <h1 className="card-title">
-            {singleLocation.name}{' '}
-            <AddFavorite
-              favorites={favorites}
-              locationId={singleLocation.id}
-              userId={user.id}
-            />
-          </h1>
-          <a href={singleLocation.instagram}>
-            <Image
-              src="/Instagram_logo.svg.webp"
-              alt="instagram"
-              width="25"
-              height="25"
-            />
-          </a>
-          <p>{singleLocation.description}</p>
-          <div>
-            <b>Address:</b> {singleLocation.address}
-            <br />
-            <b>Opening hours:</b> {singleLocation.openingHours}
-            <br />
-            <b>{singleLocation.price}</b>
-            <br />
-            <b>Got to their website:</b>{' '}
-            <a href={singleLocation.website}>{singleLocation.website}</a>
-          </div>
+    <main>
+      <div
+        className="-mt-6 bg-cover bg-center bg-fixed bg-no-repeat "
+        style={{
+          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+        }}
+      >
+        <div className="flex flex-col items-center">
+          <div className="card w-96 bg-base-100 shadow-xl shadow-primary my-2">
+            <figure>
+              <Image
+                src={`/images/${singleLocation.id}.jpg`}
+                alt={singleLocation.name}
+                width="350"
+                height="350"
+                className="py-5"
+              />
+            </figure>
+            <div className="card-body">
+              <h1 className="card-title">
+                {singleLocation.name}{' '}
+                <AddFavorite
+                  favorites={favorites}
+                  locationId={singleLocation.id}
+                  userId={user.id}
+                />
+              </h1>
+              <a href={singleLocation.instagram}>
+                <Image
+                  src="/Instagram_logo.svg.webp"
+                  alt="instagram"
+                  width="25"
+                  height="25"
+                />
+              </a>
+              <p>{singleLocation.description}</p>
+              <div>
+                <b>Address:</b> {singleLocation.address}
+                <br />
+                <b>Opening hours:</b> {singleLocation.openingHours}
+                <br />
+                <b>{singleLocation.price}</b>
+                <br />
+                <b>Got to their website:</b>{' '}
+                <a href={singleLocation.website}>{singleLocation.website}</a>
+              </div>
 
-          <CommentForm
-            comments={comments}
-            locationId={singleLocation.id}
-            userId={user.id}
-            userName={user.username}
-          />
+              <CommentForm
+                comments={comments}
+                locationId={singleLocation.id}
+                userId={user.id}
+                userName={user.username}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </main>

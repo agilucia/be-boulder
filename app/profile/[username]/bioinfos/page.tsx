@@ -22,10 +22,19 @@ export default async function BioInfos({ params }: Props) {
   const images = await getImagesByUserId(user.id);
 
   return (
-    <main className="flex flex-col items-center">
-      <Link href={`/profile/${user.username}`}>Back to profile</Link>
-      <BioForm bios={bios} userId={user.id} />
-      <AddImage images={images} userId={user.id} />
+    <main>
+      <div
+        className="-mt-6 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat "
+        style={{
+          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+        }}
+      >
+        <div className="flex flex-col items-center">
+          <Link href={`/profile/${user.username}`}>Back to profile</Link>
+          <BioForm bios={bios} userId={user.id} />
+          <AddImage images={images} userId={user.id} />
+        </div>
+      </div>
     </main>
   );
 }

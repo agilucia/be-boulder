@@ -57,26 +57,35 @@ export default async function ImagePage(props: Props) {
   const reactions = await getReactionsForImage(singleImage.id);
 
   return (
-    <main className="flex flex-col items-center">
-      <div className="card w-96 bg-base-100 shadow-xl my-2 items-center">
-        <figure className="px-10 pt-10">
-          <Image
-            src={`${singleImage.imageUrl}`}
-            alt="user generated image"
-            width="200"
-            height="200"
-          />
-        </figure>
-        <div className="card-body items-center text-center">
-          <p>{singleImage.caption}</p>
-        </div>
+    <main>
+      <div
+        className="-mt-6 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat "
+        style={{
+          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+        }}
+      >
+        <div className="flex flex-col items-center">
+          <div className="card w-96 bg-base-100 shadow-xl my-2 items-center mt-4 pb-4">
+            <figure className="px-10 pt-10">
+              <Image
+                src={`${singleImage.imageUrl}`}
+                alt="user generated image"
+                width="200"
+                height="200"
+              />
+            </figure>
+            <div className="card-body items-center text-center">
+              <p>{singleImage.caption}</p>
+            </div>
 
-        <ReactionForm
-          reactions={reactions}
-          imageId={singleImage.id}
-          userId={user.id}
-          userName={user.username}
-        />
+            <ReactionForm
+              reactions={reactions}
+              imageId={singleImage.id}
+              userId={user.id}
+              userName={user.username}
+            />
+          </div>
+        </div>
       </div>
     </main>
   );

@@ -23,53 +23,56 @@ export default function CommentForm(props: Props) {
 
   return (
     <main>
-      <input
-        value={content}
-        placeholder="Leave a comment"
-        className="input input-bordered w-full max-w-xs"
-        onChange={(event) => setContent(event.currentTarget.value)}
-      />
-      <button
-        className="btn btn-xs btn-primary"
-        onClick={async () => {
-          const locationId = props.locationId;
-          const userName = props.userName;
-          // const userId = props.userId;
-          const response = await fetch('/api/comments', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              content,
-              locationId,
-              // userId,
-              userName,
-            }),
-          });
+      <div className="inline-flex  mb-2">
+        <input
+          value={content}
+          placeholder="Leave a comment"
+          className="input input-bordered w-full max-w-xs"
+          onChange={(event) => setContent(event.currentTarget.value)}
+        />
 
-          const data = await response.json();
+        <button
+          className="btn btn-xs btn-primary self-end"
+          onClick={async () => {
+            const locationId = props.locationId;
+            const userName = props.userName;
+            // const userId = props.userId;
+            const response = await fetch('/api/comments', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                content,
+                locationId,
+                // userId,
+                userName,
+              }),
+            });
 
-          if (data.error) {
-            setError(data.error);
-            return;
-          }
-          // you should use this
-          // router.refresh()
+            const data = await response.json();
 
-          setComments([...comments, data.comment]);
-          setContent('');
-        }}
-      >
-        Comment
-      </button>
+            if (data.error) {
+              setError(data.error);
+              return;
+            }
+            // you should use this
+            // router.refresh()
+
+            setComments([...comments, data.comment]);
+            setContent('');
+          }}
+        >
+          Comment
+        </button>
+      </div>
       {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
       <div>
         {comments.map((comment) => (
-          <div key={`comment-${comment.id}`}>
+          <div key={`comment-${comment.id}`} className="inline-flex">
             <div>
               <Link href={`/profile/${comment.userName}`}>
-                <b>{comment.userName}:</b>
+                <b>{comment.userName}: </b>
               </Link>
             </div>
             {idOnEditMode !== comment.id ? (
@@ -85,7 +88,7 @@ export default function CommentForm(props: Props) {
             <div>
               {props.userId === comment.userId ? (
                 <button
-                  className="btn btn-circle btn-xs mx-2.5"
+                  className="btn btn-circle btn-xs btn-primary mx-2.5"
                   onClick={async () => {
                     const response = await fetch(
                       `/api/comments/${comment.id}`,
@@ -118,7 +121,7 @@ export default function CommentForm(props: Props) {
               {props.userId === comment.userId &&
               idOnEditMode !== comment.id ? (
                 <button
-                  className="btn btn-xs"
+                  className="btn btn-xs btn-primary"
                   onClick={() => {
                     setIdOnEditMode(comment.id);
                     setEditContent(comment.content);
@@ -133,7 +136,7 @@ export default function CommentForm(props: Props) {
               {props.userId === comment.userId &&
               idOnEditMode === comment.id ? (
                 <button
-                  className="btn btn-xs"
+                  className="btn btn-xs btn-primary"
                   onClick={async () => {
                     const response = await fetch(
                       `/api/comments/${comment.id}`,

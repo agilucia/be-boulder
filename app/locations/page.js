@@ -17,49 +17,58 @@ export const metadata = {
 export default async function Locations() {
   const locations = await getLocations();
   return (
-    <main className="flex flex-col items-center">
-      <h1 className="text-xl text-primary">
-        <b>BE BOULDER</b>
-      </h1>
-      <div>
-        <Map locations={locations} />
-      </div>
-      <span>
-        {locations.map((location) => {
-          return (
-            <div
-              key={`location-${location.id}`}
-              className="card w-96 bg-base-100 shadow-xl hover:shadow-primary my-2"
-            >
-              <Link href={`/locations/${location.id}`}>
-                <figure className="px-10 pt-10">
-                  <Image
-                    className="py-2"
-                    src={`/images/${location.id}.jpg`}
-                    alt={location.name}
-                    width="300"
-                    height="300"
-                  />
-                </figure>
-                <div className="card-body items-center text-center">
-                  <h3 className="card-title">{location.name}</h3>
+    <main>
+      <div
+        className="-mt-6 bg-cover bg-center bg-fixed bg-no-repeat "
+        style={{
+          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+        }}
+      >
+        <div className="flex flex-col items-center">
+          <h1 className="text-2xl text-white ">
+            <b>BE BOULDER</b>
+          </h1>
+          <div>
+            <Map locations={locations} />
+          </div>
+          <span>
+            {locations.map((location) => {
+              return (
+                <div
+                  key={`location-${location.id}`}
+                  className="card w-96 bg-base-100 shadow-xl hover:shadow-primary my-2"
+                >
+                  <Link href={`/locations/${location.id}`}>
+                    <figure className="px-10 pt-10">
+                      <Image
+                        className="py-2"
+                        src={`/images/${location.id}.jpg`}
+                        alt={location.name}
+                        width="300"
+                        height="300"
+                      />
+                    </figure>
+                    <div className="card-body items-center text-center">
+                      <h3 className="card-title">{location.name}</h3>
 
-                  <p>{location.openingHours}</p>
+                      <p>{location.openingHours}</p>
+                    </div>
+                  </Link>
+                  <a href={location.instagram}>
+                    <Image
+                      src="/Instagram_logo.svg.webp"
+                      alt="instagram"
+                      width="25"
+                      height="25"
+                      className="m-3"
+                    />
+                  </a>
                 </div>
-              </Link>
-              <a href={location.instagram}>
-                <Image
-                  src="/Instagram_logo.svg.webp"
-                  alt="instagram"
-                  width="25"
-                  height="25"
-                  className="m-3"
-                />
-              </a>
-            </div>
-          );
-        })}
-      </span>
+              );
+            })}
+          </span>
+        </div>
+      </div>
     </main>
   );
 }

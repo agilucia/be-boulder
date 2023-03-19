@@ -33,16 +33,24 @@ export default async function Conversations(props: Props) {
   const conversations = await getConversations();
   return (
     <main>
-      <div className="flex flex-col items-center">
-        <h1>
-          <b>Lobby</b>
-        </h1>
+      <div
+        className="-mt-6 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat "
+        style={{
+          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+        }}
+      >
+        <div className="flex flex-col items-center">
+          <h1 className="text-2xl text-white mt-4">
+            <b>Lobby</b>
+          </h1>
+        </div>
+
+        <ConversationForm
+          conversations={conversations}
+          userId={user.id}
+          userName={user.username}
+        />
       </div>
-      <ConversationForm
-        conversations={conversations}
-        userId={user.id}
-        userName={user.username}
-      />
     </main>
   );
 }

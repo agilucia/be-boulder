@@ -5,8 +5,8 @@ import { getUserBySessionToken } from '../database/users';
 
 export const metadata = {
   title: {
-    default: 'be boulder',
-    template: '%s | be boulder',
+    default: 'BE BOULDER',
+    template: '%s | BE BOULDER',
   },
 };
 
@@ -30,84 +30,10 @@ export default async function RootLayout(props: Props) {
   return (
     <html lang="en">
       <head />
-      <body className="mt-6">
-        {/* <header> */}
-        {/* <nav>
-            <div>
-              <div className="navbar bg-base-100 justify-center">
-                <Link href="/" className="btn btn-ghost normal-case text-lg">
-                  Home
-                </Link>
-                <Link
-                  href="/locations"
-                  className="btn btn-ghost normal-case text-lg"
-                >
-                  Map
-                </Link>
-                <div>
-                  {user ? (
-                    <>
-                      <Link
-                        href={`/profile/${user.username}`}
-                        className="btn btn-ghost normal-case text-lg"
-                      >
-                        {user.username}
-                      </Link>
-                      <Link
-                        href="/logout"
-                        prefetch={false}
-                        className="btn btn-ghost normal-case text-lg"
-                      >
-                        logout
-                      </Link>
-                    </>
-                  ) : (
-                    <>
-                      <Link
-                        href="/register"
-                        className="btn btn-ghost normal-case text-lg"
-                      >
-                        register
-                      </Link>
-                      <Link
-                        href="/login"
-                        className="btn btn-ghost normal-case text-lg"
-                      >
-                        login
-                      </Link>
-                    </>
-                  )}
-                </div> */}
-
-        {/* <Link
-                  href="/register"
-                  classNameName="btn btn-ghost normal-case text-lg"
-                >
-                  register
-                </Link>
-                <Link
-                  href="/login"
-                  classNameName="btn btn-ghost normal-case text-lg"
-                >
-                  login
-                </Link>
-                {/* we want to disable prefetch for logout link */}
-        {/* <Link
-                  classNameName="btn btn-ghost normal-case text-lg"
-                  href="/logout"
-                  prefetch={false}
-                >
-                  logout
-                </Link>
-                {user && user.username} */}
-        {/* </div>
-            </div>
-          </nav>
-        </header> */}
-
+      <body className="mt-6 flex flex-col min-h-screen">
         {props.children}
-        <div className="btm-nav">
-          <Link href="/">
+        <div className="btm-nav btm-nav-sm">
+          <Link href="/" className="hover:text-primary hover:active">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -123,7 +49,7 @@ export default async function RootLayout(props: Props) {
               />
             </svg>
           </Link>
-          <Link href="/locations">
+          <Link href="/locations" className="hover:text-primary hover:active">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -144,7 +70,7 @@ export default async function RootLayout(props: Props) {
               />
             </svg>
           </Link>
-          <button className="dropdown dropdown-top dropdown-end h-5 w-5">
+          <button className="dropdown dropdown-top dropdown-end hover:text-primary hover:active">
             <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-36">
               {user ? (
                 <>
@@ -211,7 +137,7 @@ export default async function RootLayout(props: Props) {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-6 h-6 m-5"
             >
               <path
                 strokeLinecap="round"
@@ -221,7 +147,7 @@ export default async function RootLayout(props: Props) {
             </svg>
           </button>
         </div>
-        <footer className="footer footer-center p-4 bg-base-300 text-base-content mb-16">
+        <footer className="footer footer-center p-4 bg-base-300 text-base-content mt-auto mb-12">
           <div>
             <p>Copyright © 2023 - All right reserved by BE BOULDER</p>
           </div>
