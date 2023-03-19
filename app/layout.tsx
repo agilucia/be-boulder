@@ -6,7 +6,6 @@ import { getUserBySessionToken } from '../database/users';
 export const metadata = {
   title: {
     default: 'BE BOULDER',
-    template: '%s | BE BOULDER',
   },
 };
 
