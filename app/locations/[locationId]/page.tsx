@@ -28,8 +28,11 @@ export async function generateMetadata(props: Props) {
   }
 
   return {
-    title: singleLocation.name,
+    title: `BE BOULDER - ${singleLocation.name}`,
     description: `Discover all information about ${singleLocation.name} and add it to your favorites`,
+    icons: {
+      shortcut: '/icon_3.svg',
+    },
   };
 }
 

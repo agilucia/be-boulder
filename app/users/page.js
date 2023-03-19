@@ -2,8 +2,12 @@ import Link from 'next/link';
 import { getAllUsers } from '../../database/users';
 
 export const metadata = {
-  title: 'Users',
-  description: 'Get to know different users',
+  title: 'BE BOULDER - Users',
+  description:
+    'Discover other users of BE BOULDER and find out more about them by clicking on their profile.',
+  icons: {
+    shortcut: '/icon_3.svg',
+  },
 };
 
 export default async function Users() {

@@ -27,6 +27,9 @@ export async function generateMetadata(props: Props) {
   return {
     titel: singleImage.id,
     description: `Image nr. ${singleImage.id}`,
+    icons: {
+      shortcut: '/icon_3.svg',
+    },
   };
 }
 

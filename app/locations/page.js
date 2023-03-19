@@ -10,8 +10,12 @@ import { getLocations } from '../../database/locations';
 const Map = dynamic(() => import('./Map'), { ssr: false });
 
 export const metadata = {
-  title: 'Locations',
-  description: 'Look at the map and find the nearest bouldering locations',
+  title: 'BE BOULDER - locations',
+  description:
+    'Discover bouldering locations in Austria on a map and get the most important informations.',
+  icons: {
+    shortcut: '/icon_3.svg',
+  },
 };
 
 export default async function Locations() {

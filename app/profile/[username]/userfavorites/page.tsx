@@ -3,11 +3,28 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getFavoriteByIdWithLocationInfo } from '../../../../database/favorites';
 import { getUserByUsername } from '../../../../database/users';
+import { profileNotFoundMetadata } from '../not-found';
 import RemoveFavorite from './RemoveFavorite';
 
 type Props = {
   params: { username: string; userId: number };
 };
+
+export async function generateMetadata({ params }: Props) {
+  const user = await getUserByUsername(params.username);
+
+  if (!user) {
+    return profileNotFoundMetadata;
+  }
+
+  return {
+    title: `BE BOULDER - ${user.username}'s favorites`,
+    description: `Discover ${user.username}'s favorite locations`,
+    icons: {
+      shortcut: '/icon_3.svg',
+    },
+  };
+}
 
 export default async function UserFavorites({ params }: Props) {
   const user = await getUserByUsername(params.username);

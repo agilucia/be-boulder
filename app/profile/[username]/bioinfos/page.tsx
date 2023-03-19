@@ -10,6 +10,15 @@ type Props = {
   params: { username: string; userId: number; imageId: number };
 };
 
+export const metadata = {
+  title: 'BE BOULDER - Edit bio info',
+  description:
+    'Edit the information in your bio and add more pictures to your personal feed.',
+  icons: {
+    shortcut: '/icon_3.svg',
+  },
+};
+
 export default async function BioInfos({ params }: Props) {
   const user = await getUserByUsername(params.username);
 

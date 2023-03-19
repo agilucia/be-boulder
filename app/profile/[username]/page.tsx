@@ -4,18 +4,33 @@ import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
 import { getBioByUserId } from '../../../database/bios';
-import { getImageById, getImagesByUserId } from '../../../database/images';
+import { getImagesByUserId } from '../../../database/images';
 import {
   getUserBySessionToken,
   getUserByUsername,
 } from '../../../database/users';
-import AddImage from './bioinfos/AddImage';
-import BioForm from './bioinfos/BioForm';
+import { profileNotFoundMetadata } from './not-found';
 import RemoveImage from './RemoveImage';
 
 type Props = {
   params: { username: string; userId: number; imageId: number };
 };
+
+export async function generateMetadata(props: Props) {
+  const user = await getUserByUsername(props.params.username);
+
+  if (!user) {
+    return profileNotFoundMetadata;
+  }
+
+  return {
+    title: `BE BOULDER - ${user.username}`,
+    description: `Find out about ${user.username} and check out their picture feed`,
+    icons: {
+      shortcut: '/icon_3.svg',
+    },
+  };
+}
 
 export default async function UserProfile(props: Props) {
   // this is a protected Route Handler
