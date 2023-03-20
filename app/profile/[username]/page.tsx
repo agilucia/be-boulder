@@ -73,7 +73,9 @@ export default async function UserProfile(props: Props) {
               <b>{user.username}</b>
             </h1>
             <br />
-            <p>About me:</p>
+            <p>
+              <b>About me:</b>
+            </p>
             <span>
               {bios.map((bio) => {
                 return <div key={`bio-${bio.userId}`}>{bio.content}</div>;

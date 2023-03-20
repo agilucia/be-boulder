@@ -39,7 +39,9 @@ export default async function BioInfos({ params }: Props) {
         }}
       >
         <div className="flex flex-col items-center">
-          <Link href={`/profile/${user.username}`}>Back to profile</Link>
+          <Link href={`/profile/${user.username}`} className="text-white m-2">
+            Back to profile
+          </Link>
           <BioForm bios={bios} userId={user.id} />
           <AddImage images={images} userId={user.id} />
         </div>

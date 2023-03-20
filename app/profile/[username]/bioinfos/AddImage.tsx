@@ -62,7 +62,7 @@ export default function AddImage(props: Props) {
 
   return (
     <main className="flex flex-col items-center">
-      <div className="card card-compact w-96 bg-base-100 shadow-xl">
+      <div className="card card-compact w-96 bg-base-100 shadow-xl mb-4">
         <div className="card-body">
           <h1 className="card-title">Share a special moment!</h1>
           <p>{error}</p>
@@ -70,14 +70,19 @@ export default function AddImage(props: Props) {
             <label>
               Upload your image here:
               <br />
-              <input onChange={handleOnChange} type="file" name="file" />
+              <input
+                onChange={handleOnChange}
+                type="file"
+                name="file"
+                className="file-input file-input-bordered file-input-xs file-input-primary w-full max-w-xs"
+              />
             </label>
             <p>Preview</p>
             <figure>
               <img src={imageSrc} alt="User upload" />
             </figure>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">Upload</button>
+              <button className="btn btn-xs btn-primary mt-2">Upload</button>
             </div>
             {successUpload && (
               <div className="toast toast-top toast-center">
@@ -88,14 +93,16 @@ export default function AddImage(props: Props) {
             )}
           </form>
 
-          <label htmlFor="caption">Caption</label>
+          <label htmlFor="caption">Caption:</label>
           <input
             value={caption}
             onChange={(event) => setCaption(event.currentTarget.value)}
+            placeholder="Add a caption"
+            className="input input-bordered input-primary w-full max-w-xs"
           />
           <div className="card-actions justify-end">
             <button
-              className="btn btn-primary"
+              className="btn btn-xs btn-primary"
               onClick={async (event) => {
                 // const userId = props.userId;
                 const imageUrl = imageSrc;
