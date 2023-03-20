@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { useState } from 'react';
 import { Conversation } from '../../database/conversations';
 
@@ -31,9 +31,9 @@ export default function ConversationForm(props: Props) {
             } flex chat chat-bubble bg-white text-black m-1`}
           >
             <div className="chat-header">
-              <Link href={`/profile/${conversation.userName}`}>
+              <a href={`/profile/${conversation.userName}`}>
                 <b>{conversation.userName}: </b>
-              </Link>
+              </a>
             </div>
             {idOnEditMode !== conversation.id ? (
               conversation.content
@@ -142,7 +142,7 @@ export default function ConversationForm(props: Props) {
         <input
           value={content}
           placeholder="Send a message"
-          className="input input-bordered input-primary w-full max-w-xs mr-1"
+          className="input input-bordered input-primary w-full max-w-xs mr-1 mb-2"
           onChange={(event) => setContent(event.currentTarget.value)}
         />
         <button

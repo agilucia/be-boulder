@@ -5,9 +5,9 @@ import { getConversations } from '../../database/conversations';
 import { getUserBySessionToken } from '../../database/users';
 import ConversationForm from './ConversationForm';
 
-type Props = {
-  params: { username: string; userId: number; conversationId: string };
-};
+// type Props = {
+//   params: { username: string; userId: number; conversationId: string };
+// };
 
 export const metadata = {
   title: 'BE BOULDER - Lobby',
@@ -18,7 +18,7 @@ export const metadata = {
   },
 };
 
-export default async function Conversations(props: Props) {
+export default async function Conversations() {
   // this is a protected Route Handler
   // 1. get the session token from the cookie
   const cookieStore = cookies();

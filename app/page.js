@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
@@ -25,9 +27,10 @@ export default function Home() {
             <p className="mb-5">
               Discover the best bouldering locations in Austria!
             </p>
-            <button className="btn btn-primary">
-              <a href="/locations">Get Started</a>
-            </button>
+
+            <Link href="/locations" className="btn btn-primary">
+              Get Started
+            </Link>
           </div>
         </div>
       </div>

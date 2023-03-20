@@ -1,8 +1,7 @@
 'use client';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Bio, updateBioById } from '../../../../database/bios';
+import { Bio } from '../../../../database/bios';
 
 type Props = {
   bios: Bio[];

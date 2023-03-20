@@ -104,7 +104,7 @@ export default function AddImage(props: Props) {
             <button
               className="btn btn-xs btn-primary"
               onClick={async (event) => {
-                // const userId = props.userId;
+                const userId = props.userId;
                 const imageUrl = imageSrc;
                 event.preventDefault();
                 const response = await fetch('/api/images', {
@@ -115,6 +115,7 @@ export default function AddImage(props: Props) {
                   body: JSON.stringify({
                     imageUrl,
                     caption,
+                    userId,
                   }),
                 });
                 const data = await response.json();

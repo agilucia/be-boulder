@@ -71,7 +71,7 @@ export default async function ImagePage(props: Props) {
           <div className="card w-96 bg-base-100 shadow-xl my-2 items-center mt-4 pb-4">
             <figure className="px-10 pt-10">
               <Image
-                src={`${singleImage.imageUrl}`}
+                src={singleImage.imageUrl}
                 alt="user generated image"
                 width="200"
                 height="200"

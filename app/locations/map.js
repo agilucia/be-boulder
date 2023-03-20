@@ -15,38 +15,6 @@ export const dynamic = 'force-dynamic';
 export default function Map(props) {
   const position = [47.5162, 14.5501];
 
-  // let marker, circle, zoomed;
-
-  // function success(pos) {
-  //   const lat = pos.coords.latitude;
-  //   const lng = pos.coords.longitude;
-  //   const accuracy = pos.coords.accuracy;
-
-  //   if (marker) {
-  //     Map.removeLayer(marker);
-  //     Map.removeLayer(circle);
-  //   }
-
-  //   marker = L.marker([lat, lng]).addTo(Map);
-  //   circle = L.circle([lat, lng], { radius: accuracy }).addTo(Map);
-
-  //   if (!zoomed) {
-  //     zoomed = Map.fitBounds(circle.getBounds());
-  //   }
-
-  //   Map.setView([lat, lng]);
-  // }
-
-  // function error(err) {
-  //   if (err.code === 1) {
-  //     alert('Please allow geolocation access');
-  //   } else {
-  //     alert('Cannot get current location');
-  //   }
-  // }
-
-  // navigator.geolocation.watchPosition(success, error);
-
   return (
     <MapContainer
       className="card w-96 bg-base-100 shadow-xl my-2"
