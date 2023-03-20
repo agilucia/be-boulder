@@ -20,11 +20,15 @@ export default function ConversationForm(props: Props) {
 
   return (
     <main>
-      <div className="chat chat-end">
+      <div className="flex flex-col items-start">
         {conversations.map((conversation) => (
           <div
             key={`conversation-${conversation.id}`}
-            className="chat-bubble bg-white inline-flex text-black"
+            className={`${
+              conversation.userName === props.userName
+                ? 'self-end'
+                : 'self-start'
+            } flex chat chat-bubble bg-white text-black m-1`}
           >
             <div className="chat-header">
               <Link href={`/profile/${conversation.userName}`}>
@@ -138,7 +142,7 @@ export default function ConversationForm(props: Props) {
         <input
           value={content}
           placeholder="Send a message"
-          className="input input-bordered w-full max-w-xs"
+          className="input input-bordered input-primary w-full max-w-xs mr-1"
           onChange={(event) => setContent(event.currentTarget.value)}
         />
         <button

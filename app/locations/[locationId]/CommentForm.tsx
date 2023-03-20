@@ -23,11 +23,11 @@ export default function CommentForm(props: Props) {
 
   return (
     <main>
-      <div className="inline-flex  mb-2">
+      <div className="inline-flex mb-2">
         <input
           value={content}
           placeholder="Leave a comment"
-          className="input input-bordered w-full max-w-xs"
+          className="input input-bordered input-primary w-full max-w-xs mr-1"
           onChange={(event) => setContent(event.currentTarget.value)}
         />
 

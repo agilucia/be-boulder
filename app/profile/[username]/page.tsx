@@ -68,7 +68,7 @@ export default async function UserProfile(props: Props) {
         }}
       >
         <div className="flex flex-col items-center text-black">
-          <div className="card w-96 bg-base-100 shadow-xl my-2 items-center pb-4">
+          <div className="card w-96 bg-base-100 shadow-xl my-2 items-center pb-4 mt-4">
             <h1 className="text-2xl text-black mt-4">
               <b>{user.username}</b>
             </h1>

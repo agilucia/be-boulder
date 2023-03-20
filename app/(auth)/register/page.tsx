@@ -19,12 +19,21 @@ export default async function RegisterPage(props: Props) {
     redirect('/');
   }
   return (
-    <main className="flex flex-col items-center">
-      <h1 className="text-xl">
-        <b>REGISTER</b>
-      </h1>
-      <div className="flex items-center justify-center">
-        <RegisterForm returnTo={props.searchParams.returnTo} />
+    <main>
+      <div
+        className="-mt-6 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat "
+        style={{
+          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+        }}
+      >
+        <div className="flex flex-col items-center">
+          <h1 className="text-xl text-white mt-4 mb-1">
+            <b>REGISTER</b>
+          </h1>
+          <div className="flex items-center justify-center">
+            <RegisterForm returnTo={props.searchParams.returnTo} />
+          </div>
+        </div>
       </div>
     </main>
   );

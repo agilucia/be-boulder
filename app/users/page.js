@@ -21,7 +21,7 @@ export default async function Users() {
         }}
       >
         <div className="flex flex-col items-center text-black">
-          <div className="card w-96 bg-base-100 shadow-xl my-2 items-center pb-4">
+          <div className="card w-96 bg-base-100 shadow-xl my-2 items-center pb-4 mt-4">
             <h1 className="text-2xl mt-4">
               <b>USERS:</b>
             </h1>

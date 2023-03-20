@@ -29,7 +29,7 @@ export default async function Locations() {
         }}
       >
         <div className="flex flex-col items-center">
-          <h1 className="text-2xl text-white ">
+          <h1 className="text-2xl text-white mt-2">
             <b>BE BOULDER</b>
           </h1>
           <div>
