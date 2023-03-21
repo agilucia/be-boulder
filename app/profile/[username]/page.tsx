@@ -62,15 +62,17 @@ export default async function UserProfile(props: Props) {
   return (
     <main>
       <div
-        className="-mt-6 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat "
+        className="-mt-6 bg-cover bg-center bg-fixed bg-no-repeat hero min-h-screen"
         style={{
-          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+          backgroundImage: `url("/images/climbing_wall.jpg") `,
         }}
       >
-        <div className="flex flex-col items-center text-black">
-          <div className="card w-96 bg-base-100 shadow-xl my-2 items-center pb-4 mt-4">
+        <div className="flex flex-col items-center text-black hero-overlay bg-opacity-60">
+          <div className="card w-96 bg-base-100 shadow-xl items-center pb-4 mt-4">
             <h1 className="text-2xl text-black mt-4">
-              <b>{user.username}</b>
+              <b>
+                {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
+              </b>
             </h1>
             <br />
             <p>
@@ -94,39 +96,42 @@ export default async function UserProfile(props: Props) {
             <Link href={`/profile/${user.username}/userfavorites`}>
               See my favorites 📌
             </Link>
+            My pictures 📷
             {/* {currentUser.id === user.id ? (
         <AddImage images={images} userId={user.id} />
       ) : (
         ''
       )} */}
           </div>
+          {/* <h2 className="text-xl text-white ">My pictures</h2> */}
           <span>
             {images.map((image) => {
               return (
                 <div
                   key={`user-${image.userId}`}
-                  className="card w-96 bg-base-100 shadow-xl my-2 items-center"
+                  className="card w-96 bg-base-100 shadow-xl my-2 items-center flex"
                 >
-                  <Link href={`/profile/${user.username}/${image.id}`}>
-                    <figure className="px-10 pt-10">
-                      <Image
-                        src={image.imageUrl}
-                        alt="user generated image"
-                        width="200"
-                        height="200"
-                      />
-                    </figure>
-                    <div className="card-body items-center text-center text-black">
-                      <p>{image.caption}</p>
-                    </div>
-                  </Link>
-                  <div className="mb-2 -mt-5">
+                  {' '}
+                  <div className="self-end pr-2 pt-2">
                     {currentUser.id === user.id ? (
                       <RemoveImage image={image} />
                     ) : (
                       ''
                     )}
                   </div>
+                  <Link href={`/profile/${user.username}/${image.id}`}>
+                    <figure className="pt-2">
+                      <Image
+                        src={image.imageUrl}
+                        alt="user generated image"
+                        width="350"
+                        height="350"
+                      />
+                    </figure>
+                    <div className="card-body items-center text-center text-black">
+                      <p>{image.caption}</p>
+                    </div>
+                  </Link>
                 </div>
               );
             })}

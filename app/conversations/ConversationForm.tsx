@@ -32,7 +32,11 @@ export default function ConversationForm(props: Props) {
           >
             <div className="chat-header">
               <a href={`/profile/${conversation.userName}`}>
-                <b>{conversation.userName}: </b>
+                <b>
+                  {conversation.userName.charAt(0).toUpperCase() +
+                    conversation.userName.slice(1)}
+                  :{' '}
+                </b>
               </a>
             </div>
             {idOnEditMode !== conversation.id ? (

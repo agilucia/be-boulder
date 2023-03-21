@@ -38,12 +38,12 @@ export default async function UserFavorites({ params }: Props) {
   return (
     <main>
       <div
-        className="-mt-6 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat "
+        className="-mt-6 bg-cover bg-center bg-fixed bg-no-repeat hero min-h-screen"
         style={{
-          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+          backgroundImage: `url("/images/climbing_wall.jpg") `,
         }}
       >
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center hero-overlay bg-opacity-60">
           <h1 className="text-2xl text-white mt-4">
             <b>MY FAVORITES:</b>
           </h1>

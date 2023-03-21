@@ -33,12 +33,12 @@ export default async function BioInfos({ params }: Props) {
   return (
     <main>
       <div
-        className="-mt-6 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat "
+        className="-mt-6 bg-cover bg-center bg-fixed bg-no-repeat hero min-h-screen"
         style={{
-          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+          backgroundImage: `url("/images/climbing_wall.jpg") `,
         }}
       >
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center hero-overlay bg-opacity-60">
           <Link href={`/profile/${user.username}`} className="text-white m-2">
             Back to profile
           </Link>

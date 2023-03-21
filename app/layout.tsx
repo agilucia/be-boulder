@@ -78,7 +78,8 @@ export default async function RootLayout(props: Props) {
                       href={`/profile/${user.username}`}
                       className="btn btn-ghost normal-case text-lg"
                     >
-                      {user.username}
+                      {user.username.charAt(0).toUpperCase() +
+                        user.username.slice(1)}
                     </Link>
                   </li>
 

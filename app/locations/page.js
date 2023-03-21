@@ -23,12 +23,12 @@ export default async function Locations() {
   return (
     <main>
       <div
-        className="-mt-6 bg-cover bg-center bg-fixed bg-no-repeat "
+        className="-mt-6 bg-cover bg-center bg-fixed bg-no-repeat hero min-h-screen"
         style={{
-          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+          backgroundImage: `url("/images/climbing_wall.jpg") `,
         }}
       >
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center hero-overlay bg-opacity-60">
           <h1 className="text-2xl text-white mt-2">
             <b>BE BOULDER</b>
           </h1>
@@ -40,22 +40,22 @@ export default async function Locations() {
               return (
                 <div
                   key={`location-${location.id}`}
-                  className="card w-96 bg-base-100 shadow-xl hover:shadow-primary my-2"
+                  className="card w-96 bg-base-100 shadow-xl hover:shadow-primary my-2 "
                 >
                   <Link href={`/locations/${location.id}`}>
-                    <figure className="px-10 pt-10">
-                      <Image
-                        className="py-2"
-                        src={`/images/${location.id}.jpg`}
-                        alt={location.name}
-                        width="300"
-                        height="300"
-                      />
-                    </figure>
                     <div className="card-body items-center text-center">
                       <h3 className="card-title">{location.name}</h3>
+                      <figure>
+                        <Image
+                          className="py-2"
+                          src={`/images/${location.id}.jpg`}
+                          alt={location.name}
+                          width="300"
+                          height="300"
+                        />
+                      </figure>
 
-                      <p>{location.openingHours}</p>
+                      <p>🕑: {location.openingHours}</p>
                     </div>
                   </Link>
                   <a href={location.instagram}>
@@ -64,7 +64,7 @@ export default async function Locations() {
                       alt="instagram"
                       width="25"
                       height="25"
-                      className="m-3"
+                      className="m-3 -mt-6"
                     />
                   </a>
                 </div>

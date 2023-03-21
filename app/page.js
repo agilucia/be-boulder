@@ -17,7 +17,7 @@ export default function Home() {
       <div
         className="hero min-h-screen -mt-6"
         style={{
-          backgroundImage: `url("/images/hero.jpg")`,
+          backgroundImage: `url("/images/climbing_wall.jpg")`,
         }}
       >
         <div className="hero-overlay bg-opacity-60" />

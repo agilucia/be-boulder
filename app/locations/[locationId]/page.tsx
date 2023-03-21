@@ -67,49 +67,61 @@ export default async function LocationPage(props: Props) {
   return (
     <main>
       <div
-        className="-mt-6 bg-cover bg-center bg-fixed bg-no-repeat "
+        className="-mt-6 bg-cover bg-center bg-fixed bg-no-repeat hero min-h-screen"
         style={{
-          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+          backgroundImage: `url("/images/climbing_wall.jpg") `,
         }}
       >
-        <div className="flex flex-col items-center">
-          <div className="card w-96 bg-base-100 shadow-xl shadow-primary my-2">
-            <figure>
-              <Image
-                src={`/images/${singleLocation.id}.jpg`}
-                alt={singleLocation.name}
-                width="350"
-                height="350"
-                className="py-5"
-              />
-            </figure>
-            <div className="card-body">
-              <h1 className="card-title">
-                {singleLocation.name}{' '}
+        <div className="flex flex-col items-center hero-overlay bg-opacity-60">
+          <div className="card w-96 bg-base-100 shadow-xl shadow-primary my-2 flex">
+            <div className="card-body -mt-12">
+              <div className="self-end ">
                 <AddFavorite
                   favorites={favorites}
                   locationId={singleLocation.id}
                   userId={user.id}
                 />
-              </h1>
-              <a href={singleLocation.instagram}>
+              </div>
+              <h1 className="card-title">{singleLocation.name} </h1>
+              <figure>
                 <Image
-                  src="/Instagram_logo.svg.webp"
-                  alt="instagram"
-                  width="25"
-                  height="25"
+                  src={`/images/${singleLocation.id}.jpg`}
+                  alt={singleLocation.name}
+                  width="350"
+                  height="350"
+                  className="py-5"
                 />
-              </a>
+              </figure>
+
               <p>{singleLocation.description}</p>
               <div>
-                <b>Address:</b> {singleLocation.address}
-                <br />
-                <b>Opening hours:</b> {singleLocation.openingHours}
-                <br />
-                <b>{singleLocation.price}</b>
-                <br />
-                <b>Got to their website:</b>{' '}
-                <a href={singleLocation.website}>{singleLocation.website}</a>
+                <div className="py-1">
+                  <b>📍Address:</b> {singleLocation.address}
+                </div>
+
+                <div className="py-1">
+                  <b>🕑Opening hours:</b> {singleLocation.openingHours}
+                </div>
+
+                <div className="py-1">
+                  <b>💰{singleLocation.price}</b>
+                </div>
+
+                <div className="py-1">
+                  <b>🌐Got to their website:</b>{' '}
+                  <a href={singleLocation.website}>{singleLocation.website}</a>
+                </div>
+
+                <div className="py-1">
+                  <a href={singleLocation.instagram}>
+                    <Image
+                      src="/Instagram_logo.svg.webp"
+                      alt="instagram"
+                      width="25"
+                      height="25"
+                    />
+                  </a>
+                </div>
               </div>
 
               <CommentForm

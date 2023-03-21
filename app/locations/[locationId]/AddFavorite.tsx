@@ -19,6 +19,7 @@ export default function AddFavorite(props: Props) {
   return (
     <main>
       <button
+        className="pt-6 -mr-4"
         onClick={async () => {
           const locationId = props.locationId;
           const userId = props.userId;
