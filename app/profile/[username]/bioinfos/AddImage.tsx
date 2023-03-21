@@ -15,12 +15,15 @@ export default function AddImage(props: Props) {
   const [caption, setCaption] = useState<string>('');
   const [imageSrc, setImageSrc] = useState<string>('');
   const [uploadData, setUploadData] = useState<Blob>();
-  const [error, setError] = useState<string>();
+  // const [error, setError] = useState<string>();
   const [successUpload, setSuccessUpload] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [errors, setErrors] = useState<{ message: string }[]>([]);
   const router = useRouter();
 
   function handleOnChange(changeEvent: React.ChangeEvent<HTMLInputElement>) {
+    const files = changeEvent.target.files!;
+
     const reader = new FileReader();
 
     reader.onload = function (onLoadEvent: ProgressEvent<FileReader>) {
@@ -28,16 +31,21 @@ export default function AddImage(props: Props) {
       setUploadData(undefined);
     };
 
-    reader.readAsDataURL(changeEvent.target.files[0]);
+    reader.readAsDataURL(files[0]!);
   }
 
   async function handleOnSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const form = event.currentTarget;
-    const fileInput = Array.from(form.elements).find(
+    const fileInput = (Array.from(form.elements) as HTMLInputElement[]).find(
       ({ name }) => name === 'file',
-    ) as HTMLInputElement;
+    );
+
+    if (!fileInput) {
+      setErrors([{ message: 'No file found!' }]);
+      return;
+    }
 
     const formData = new FormData();
 
@@ -65,7 +73,9 @@ export default function AddImage(props: Props) {
       <div className="card card-compact w-96 bg-base-100 shadow-xl mb-4">
         <div className="card-body">
           <h1 className="card-title">Share a special moment!</h1>
-          <p>{error}</p>
+          {errors.map((error) => (
+            <div key={`error-${error.message}`}>Error: {error.message}</div>
+          ))}
           <form method="post" onSubmit={handleOnSubmit}>
             <label>
               Upload your image here:
@@ -82,7 +92,9 @@ export default function AddImage(props: Props) {
               <img src={imageSrc} alt="User upload" />
             </figure>
             <div className="card-actions justify-end">
-              <button className="btn btn-xs btn-primary mt-2">Upload</button>
+              {!!imageSrc && !uploadData && (
+                <button className="btn btn-xs btn-primary mt-2">Upload</button>
+              )}
             </div>
             {successUpload && (
               <div className="toast toast-top toast-center">
@@ -120,8 +132,8 @@ export default function AddImage(props: Props) {
                 });
                 const data = await response.json();
 
-                if (data.error) {
-                  setError(data.error);
+                if ('errors' in data) {
+                  setErrors(data.errors);
                   return;
                 }
 
@@ -141,9 +153,7 @@ export default function AddImage(props: Props) {
               </div>
             )}
           </div>
-          {typeof error === 'string' && (
-            <div style={{ color: 'red' }}>{error}</div>
-          )}
+
           {/* </form> */}
         </div>
       </div>
