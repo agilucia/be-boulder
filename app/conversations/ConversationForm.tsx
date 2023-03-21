@@ -20,7 +20,7 @@ export default function ConversationForm(props: Props) {
 
   return (
     <main>
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start overflow-scroll">
         {conversations.map((conversation) => (
           <div
             key={`conversation-${conversation.id}`}
@@ -142,7 +142,7 @@ export default function ConversationForm(props: Props) {
         ))}
       </div>
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mt-96 relative self-center">
         <input
           value={content}
           placeholder="Send a message"

@@ -48,17 +48,18 @@ export default async function Conversations() {
           backgroundImage: `url("/images/climbing_wall.jpg") `,
         }}
       >
-        <div className="flex flex-col items-center hero-overlay bg-opacity-60">
-          <h1 className="text-2xl text-white mt-4">
+        <div className="flex flex-col items-center hero-overlay bg-opacity-60 my-4">
+          <h1 className="text-2xl text-white my-4">
             <b>Lobby</b>
           </h1>
         </div>
-
-        <ConversationForm
-          conversations={conversations}
-          userId={user.id}
-          userName={user.username}
-        />
+        <div className="mt-16">
+          <ConversationForm
+            conversations={conversations}
+            userId={user.id}
+            userName={user.username}
+          />
+        </div>
       </div>
     </main>
   );

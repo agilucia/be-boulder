@@ -21,12 +21,12 @@ export default async function RegisterPage(props: Props) {
   return (
     <main>
       <div
-        className="-mt-6 min-h-screen bg-cover bg-center bg-fixed bg-no-repeat "
+        className="hero min-h-screen -mt-6"
         style={{
-          backgroundImage: `url("/images/climbing_wall_background.jpg")`,
+          backgroundImage: `url("/images/climbing_wall.jpg")`,
         }}
       >
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center hero-overlay bg-opacity-60">
           <h1 className="text-xl text-white mt-4 mb-1">
             <b>REGISTER</b>
           </h1>

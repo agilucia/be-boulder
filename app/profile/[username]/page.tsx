@@ -128,7 +128,7 @@ export default async function UserProfile(props: Props) {
                         height="350"
                       />
                     </figure>
-                    <div className="card-body items-center text-center text-black">
+                    <div className="card-body items-center text-center text-black -my-4">
                       <p>{image.caption}</p>
                     </div>
                   </Link>
