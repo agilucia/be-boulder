@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {},
     fontFamily: {
-      sans: ['Permanent Marker', 'cursive'],
+      sans: ['Chakra Petch', 'sans-serif'],
     },
   },
   plugins: [require('daisyui')],
