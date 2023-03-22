@@ -20,7 +20,7 @@ export default function ConversationForm(props: Props) {
 
   return (
     <main>
-      <div className="flex flex-col items-start overflow-scroll">
+      <div className="flex flex-col items-start">
         {conversations.map((conversation) => (
           <div
             key={`conversation-${conversation.id}`}
@@ -28,7 +28,7 @@ export default function ConversationForm(props: Props) {
               conversation.userName === props.userName
                 ? 'self-end'
                 : 'self-start'
-            } flex chat chat-bubble bg-white text-black m-1`}
+            } flex chat chat-bubble bg-white text-black m-1 bg-opacity-90`}
           >
             <div className="chat-header">
               <a href={`/profile/${conversation.userName}`}>
@@ -142,11 +142,11 @@ export default function ConversationForm(props: Props) {
         ))}
       </div>
 
-      <div className="flex items-center justify-center mt-96 relative self-center">
+      <div className="flex items-center justify-center self-center">
         <input
           value={content}
           placeholder="Send a message"
-          className="input input-bordered input-primary w-full max-w-xs mr-1 mb-2"
+          className="input input-bordered input-primary w-full max-w-xs mr-1 mb-2 bg-opacity-90"
           onChange={(event) => setContent(event.currentTarget.value)}
         />
         <button

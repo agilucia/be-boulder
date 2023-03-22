@@ -64,7 +64,7 @@ export default function ReactionForm(props: Props) {
         </button>
       </div>
       {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
-      <div>
+      <div className="flex flex-col">
         {reactions.map((reaction) => (
           <div key={`reaction-${reaction.id}`} className="inline-flex">
             <div>

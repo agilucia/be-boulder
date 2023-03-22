@@ -53,13 +53,12 @@ export default async function Conversations() {
             <b>Lobby</b>
           </h1>
         </div>
-        <div className="mt-16">
-          <ConversationForm
-            conversations={conversations}
-            userId={user.id}
-            userName={user.username}
-          />
-        </div>
+
+        <ConversationForm
+          conversations={conversations}
+          userId={user.id}
+          userName={user.username}
+        />
       </div>
     </main>
   );

@@ -68,7 +68,7 @@ export default async function ImagePage(props: Props) {
         }}
       >
         <div className="flex flex-col items-center hero-overlay bg-opacity-60">
-          <div className="card w-96 bg-base-100 shadow-xl my-2 items-center mt-4 pb-4">
+          <div className="card w-96 bg-base-100 shadow-xl my-2 items-center mt-4 pb-4 bg-opacity-90">
             <figure className="px-10 pt-10">
               <Image
                 src={singleImage.imageUrl}

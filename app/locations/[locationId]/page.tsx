@@ -73,7 +73,7 @@ export default async function LocationPage(props: Props) {
         }}
       >
         <div className="flex flex-col items-center hero-overlay bg-opacity-60">
-          <div className="card w-96 bg-base-100 shadow-xl shadow-primary my-2 flex">
+          <div className="card w-96 bg-base-100 shadow-xl my-2 flex bg-opacity-90">
             <div className="card-body -mt-12">
               <div className="self-end ">
                 <AddFavorite

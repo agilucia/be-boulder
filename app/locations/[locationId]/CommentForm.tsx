@@ -67,7 +67,7 @@ export default function CommentForm(props: Props) {
         </button>
       </div>
       {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
-      <div>
+      <div className="flex flex-col">
         {comments.map((comment) => (
           <div key={`comment-${comment.id}`} className="inline-flex">
             <div>
