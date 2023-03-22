@@ -3,6 +3,8 @@ import { redirect } from 'next/navigation';
 import { getValidSessionByToken } from '../../../database/sessions';
 import LoginForm from './LoginForm';
 
+export const dynamic = 'force-dynamic';
+
 type Props = { searchParams: { returnTo?: string | string[] } };
 
 export default async function LoginPage(props: Props) {

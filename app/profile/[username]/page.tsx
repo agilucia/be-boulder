@@ -12,6 +12,8 @@ import {
 import { profileNotFoundMetadata } from './not-found';
 import RemoveImage from './RemoveImage';
 
+export const dynamic = 'force-dynamic';
+
 type Props = {
   params: { username: string; userId: number; imageId: number };
 };

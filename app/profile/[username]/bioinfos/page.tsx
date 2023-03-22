@@ -6,6 +6,8 @@ import { getUserByUsername } from '../../../../database/users';
 import AddImage from './AddImage';
 import BioForm from './BioForm';
 
+export const dynamic = 'force-dynamic';
+
 type Props = {
   params: { username: string; userId: number; imageId: number };
 };

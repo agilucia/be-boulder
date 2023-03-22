@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { getAllUsers } from '../../database/users';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'BE BOULDER - Users',
   description:

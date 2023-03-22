@@ -5,6 +5,8 @@ import { getConversations } from '../../database/conversations';
 import { getUserBySessionToken } from '../../database/users';
 import ConversationForm from './ConversationForm';
 
+export const dynamic = 'force-dynamic';
+
 // type Props = {
 //   params: { username: string; userId: number; conversationId: string };
 // };

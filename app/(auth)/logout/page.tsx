@@ -2,6 +2,7 @@ import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { deleteSessionByToken } from '../../../database/sessions';
 
+export const dynamic = 'force-dynamic';
 // 1. send a cookie deletion task for the browser
 // use a middleware for that
 export default async function LogoutPage() {

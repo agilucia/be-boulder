@@ -6,6 +6,8 @@ import { getUserByUsername } from '../../../../database/users';
 import { profileNotFoundMetadata } from '../not-found';
 import RemoveFavorite from './RemoveFavorite';
 
+export const dynamic = 'force-dynamic';
+
 type Props = {
   params: { username: string; userId: number };
 };
