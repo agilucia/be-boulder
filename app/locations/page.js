@@ -7,7 +7,7 @@ import { getLocations } from '../../database/locations';
 
 // export const dynamic = 'force-dynamic';
 
-const Map = dynamic(() => import('./Map'), { ssr: false });
+const LocationsMap = dynamic(() => import('./LocationsMap'), { ssr: false });
 
 export const metadata = {
   title: 'BE BOULDER - locations',
@@ -33,7 +33,7 @@ export default async function Locations() {
             <b>BE BOULDER</b>
           </h1>
           <div>
-            <Map locations={locations} />
+            <LocationsMap locations={locations} />
           </div>
           <span>
             {locations.map((location) => {

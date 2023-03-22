@@ -12,16 +12,17 @@ export const dynamic = 'force-dynamic';
 
 // const map = L.map('Map');
 
-export default function Map(props) {
+export default function LocationsMap(props) {
   const position = [47.5162, 14.5501];
 
   return (
     <MapContainer
-      className="card w-96 bg-base-100 shadow-xl my-2"
+      className="card w-96 bg-base-100 shadow-xl my-2 z-0"
       center={position}
       zoom={7}
       scrollWheelZoom={true}
       style={{ height: 400, width: 400 }}
+      animate={true}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright"'

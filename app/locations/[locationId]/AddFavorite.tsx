@@ -58,7 +58,12 @@ export default function AddFavorite(props: Props) {
       )}
 
       {errors.map((error) => (
-        <div key={`error-${error.message}`}>{error.message}</div>
+        <div
+          key={`error-${error.message}`}
+          className="toast toast-top toast-center"
+        >
+          <div className="alert alert-info">{error.message}</div>
+        </div>
       ))}
     </main>
   );

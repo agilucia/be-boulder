@@ -28,14 +28,14 @@ export default function ConversationForm(props: Props) {
               conversation.userName === props.userName
                 ? 'self-end'
                 : 'self-start'
-            } flex chat chat-bubble bg-white text-black m-1 bg-opacity-90`}
+            } flex chat chat-bubble bg-white text-black m-1`}
           >
             <div className="chat-header">
               <a href={`/profile/${conversation.userName}`}>
                 <b>
                   {conversation.userName.charAt(0).toUpperCase() +
                     conversation.userName.slice(1)}
-                  :{' '}
+                  :
                 </b>
               </a>
             </div>

@@ -69,7 +69,7 @@ export default async function RootLayout(props: Props) {
               />
             </svg>
           </Link>
-          <button className="dropdown dropdown-top dropdown-end hover:text-primary hover:active">
+          <button className="dropdown dropdown-top dropdown-end z-10 hover:text-primary hover:active">
             <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-36">
               {user ? (
                 <>
