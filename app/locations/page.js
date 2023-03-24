@@ -1,13 +1,13 @@
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getLocations } from '../../database/locations';
-
-// import Map from './Map';
+import LocationsMap from './LocationsMap';
+import NonSSRWrapper from './no-ssr-wrapper';
 
 // export const dynamic = 'force-dynamic';
 
-const LocationsMap = dynamic(() => import('./LocationsMap'), { ssr: false });
+// const LocationsMap = dynamic(() => import('./LocationsMap'), { ssr: false });
 
 export const metadata = {
   title: 'BE BOULDER - locations',
@@ -33,7 +33,9 @@ export default async function Locations() {
             <b>BE BOULDER</b>
           </h1>
           <div>
-            <LocationsMap locations={locations} />
+            <NonSSRWrapper>
+              <LocationsMap locations={locations} />
+            </NonSSRWrapper>
           </div>
           <span>
             {locations.map((location) => {
