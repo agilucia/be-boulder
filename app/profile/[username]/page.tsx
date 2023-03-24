@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';

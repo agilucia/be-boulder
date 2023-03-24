@@ -39,8 +39,8 @@ export const createLocation = cache(
     price: string,
     openingHours: string,
     description: string,
-    lat: number,
-    lng: number,
+    lat: string,
+    lng: string,
   ) => {
     const [location] = await sql<Location[]>`
     INSERT INTO locations
@@ -64,8 +64,8 @@ export const updateLocationById = cache(
     price: string,
     openingHours: string,
     description: string,
-    lat: number,
-    lng: number,
+    lat: string,
+    lng: string,
   ) => {
     const [location] = await sql<Location[]>`
     UPDATE
@@ -77,7 +77,7 @@ export const updateLocationById = cache(
       instagram = ${instagram},
       price = ${price},
       openingHours = ${openingHours},
-      description = ${description}
+      description = ${description},
       lat = ${lat},
       lng = ${lng}
     WHERE

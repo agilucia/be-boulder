@@ -11,8 +11,8 @@ export type Reaction = {
 export type ReactionWithUsername = {
   id: number;
   content: string;
-  imageId: number | null;
   userId: number | null;
+  imageId: number | null;
   userName: string | null;
 };
 
@@ -25,6 +25,8 @@ export const getReactionForImageWithUsername = cache(
     reactions
   INNER JOIN
     users ON reactions.user_id = users.id
+  INNER JOIN
+    images ON reactions.image_id = images.id
   WHERE
     reactions.image_id = ${imageId}
     `;

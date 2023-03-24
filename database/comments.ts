@@ -11,8 +11,8 @@ export type Comment = {
 export type CommentWithUsername = {
   id: number;
   content: string;
-  locationId: number | null;
   userId: number | null;
+  locationId: number | null;
   userName: string | null;
 };
 
