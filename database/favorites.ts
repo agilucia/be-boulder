@@ -3,8 +3,8 @@ import { sql } from './connect';
 
 export type Favorite = {
   id: number;
-  locationId: number;
-  userId: number;
+  locationId: number | null;
+  userId: number | null;
 };
 
 // get all favorites for single user

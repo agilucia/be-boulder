@@ -70,7 +70,7 @@ export const createUser = cache(
 );
 
 export const getAllUsers = cache(async () => {
-  const users = await sql<User[]>`
+  const users = await sql<UserWithPasswordHash[]>`
   SELECT * FROM users
   `;
 

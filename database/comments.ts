@@ -11,9 +11,9 @@ export type Comment = {
 export type CommentWithUsername = {
   id: number;
   content: string;
-  locationId: number;
-  userId: number;
-  userName: string;
+  locationId: number | null;
+  userId: number | null;
+  userName: string | null;
 };
 
 export const getCommentsForLocationWithUsername = cache(

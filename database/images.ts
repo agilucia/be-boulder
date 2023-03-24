@@ -3,9 +3,9 @@ import { sql } from './connect';
 
 export type Image = {
   id: number;
-  imageUrl: string;
-  caption: string;
-  userId: number;
+  imageUrl: string | null;
+  caption: string | null;
+  userId: number | null;
 };
 
 // get all images

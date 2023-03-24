@@ -11,9 +11,9 @@ export type Reaction = {
 export type ReactionWithUsername = {
   id: number;
   content: string;
-  imageId: number;
-  userId: number;
-  userName: string;
+  imageId: number | null;
+  userId: number | null;
+  userName: string | null;
 };
 
 export const getReactionForImageWithUsername = cache(

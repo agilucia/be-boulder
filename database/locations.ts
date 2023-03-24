@@ -10,8 +10,8 @@ export type Location = {
   price: string;
   openingHours: string;
   description: string;
-  lat: number;
-  lng: number;
+  lat: string;
+  lng: string;
 };
 
 // get all locations

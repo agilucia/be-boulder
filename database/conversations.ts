@@ -4,8 +4,8 @@ import { sql } from './connect';
 export type Conversation = {
   id: number;
   content: string;
-  userId: number;
-  userName: string;
+  userId: number | null;
+  userName: string | null;
 };
 
 export const getConversations = cache(async () => {

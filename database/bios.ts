@@ -4,7 +4,7 @@ import { sql } from './connect';
 export type Bio = {
   id: number;
   content: string;
-  userId: number;
+  userId: number | null;
 };
 
 // get single bio
