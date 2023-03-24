@@ -26,7 +26,7 @@ export const getReactionForImageWithUsername = cache(
   INNER JOIN
     users ON reactions.user_id = users.id
   WHERE
-    reactions.image_id = ${imageId}
+    reactions.image_id = ${imageId || null}
     `;
 
     return reactionsWithUsername;
