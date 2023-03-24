@@ -16,22 +16,22 @@ export type ReactionWithUsername = {
   userName: string | null;
 };
 
-export const getReactionForImageWithUsername = cache(
-  async (imageId: number) => {
-    const reactionsWithUsername = await sql<ReactionWithUsername[]>`
-  SELECT
-    *
-  FROM
-    reactions
-  INNER JOIN
-    users ON reactions.user_id = users.id
-  WHERE
-    reactions.image_id = ${imageId}
-    `;
+// export const getReactionForImageWithUsername = cache(
+//   async (imageId: number, userName: string) => {
+//     const reactionsWithUsername = await sql<ReactionWithUsername[]>`
+//   SELECT
+//     *
+//   FROM
+//     reactions
+//   INNER JOIN
+//     users ON reactions.user_id = users.id
+//   WHERE
+//     reactions.image_id = ${imageId} AND reactions.user_name = ${userName}
+//     `;
 
-    return reactionsWithUsername;
-  },
-);
+//     return reactionsWithUsername;
+//   },
+// );
 
 // get all reactions for single image
 export const getReactionsForImage = cache(async (imageId: number) => {

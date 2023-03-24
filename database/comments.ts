@@ -16,22 +16,22 @@ export type CommentWithUsername = {
   userName: string | null;
 };
 
-export const getCommentsForLocationWithUsername = cache(
-  async (locationId: number) => {
-    const commentsWithUsername = await sql<CommentWithUsername[]>`
-  SELECT
-    *
-  FROM
-    comments
-  INNER JOIN
-    users ON comments.user_id = users.id
-  WHERE
-    comments.location_id = ${locationId}
-  `;
+// export const getCommentsForLocationWithUsername = cache(
+//   async (locationId: number) => {
+//     const commentsWithUsername = await sql<CommentWithUsername[]>`
+//   SELECT
+//     *
+//   FROM
+//     comments
+//   INNER JOIN
+//     users ON comments.user_id = users.id
+//   WHERE
+//     comments.location_id = ${locationId}
+//   `;
 
-    return commentsWithUsername;
-  },
-);
+//     return commentsWithUsername;
+//   },
+// );
 
 // get all comments for single location
 export const getCommentsForLocation = cache(async (locationId: number) => {
