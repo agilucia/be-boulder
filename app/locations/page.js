@@ -1,13 +1,14 @@
-// import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getLocations } from '../../database/locations';
-import LocationsMap from './LocationsMap';
-import NonSSRWrapper from './no-ssr-wrapper';
+
+// import LocationsMap from './LocationsMap';
 
 // export const dynamic = 'force-dynamic';
 
-// const LocationsMap = dynamic(() => import('./LocationsMap'), { ssr: false });
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const LocationsMap = dynamic(() => import('./LocationsMap'), { ssr: false });
 
 export const metadata = {
   title: 'BE BOULDER - locations',
@@ -33,9 +34,7 @@ export default async function Locations() {
             <b>BE BOULDER</b>
           </h1>
           <div>
-            <NonSSRWrapper>
-              <LocationsMap locations={locations} />
-            </NonSSRWrapper>
+            <LocationsMap locations={locations} />
           </div>
           <span>
             {locations.map((location) => {
