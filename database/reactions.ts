@@ -17,7 +17,7 @@ export type ReactionWithUsername = {
 };
 
 export const getReactionForImageWithUsername = cache(
-  async (imageId: number | null) => {
+  async (imageId: number) => {
     const reactionsWithUsername = await sql<ReactionWithUsername[]>`
   SELECT
     *
@@ -26,7 +26,7 @@ export const getReactionForImageWithUsername = cache(
   INNER JOIN
     users ON reactions.user_id = users.id
   WHERE
-    reactions.image_id = ${imageId || null}
+    reactions.image_id = ${imageId}
     `;
 
     return reactionsWithUsername;
