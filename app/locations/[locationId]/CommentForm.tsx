@@ -71,13 +71,17 @@ export default function CommentForm(props: Props) {
         {comments.map((comment) => (
           <div key={`comment-${comment.id}`} className="inline-flex">
             <div>
-              <Link href={`/profile/${comment.userName}`}>
-                <b>
-                  {comment.userName.charAt(0).toUpperCase() +
-                    comment.userName.slice(1)}
-                  :{' '}
-                </b>
-              </Link>
+              {comment.userName ? (
+                <Link href={`/profile/${comment.userName}`}>
+                  <b>
+                    {comment.userName.charAt(0).toUpperCase() +
+                      comment.userName.slice(1)}
+                    :{' '}
+                  </b>
+                </Link>
+              ) : (
+                ''
+              )}
             </div>
             {idOnEditMode !== comment.id ? (
               comment.content

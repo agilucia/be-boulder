@@ -123,9 +123,9 @@ export default async function UserProfile(props: Props) {
                   </div>
                   <Link href={`/profile/${user.username}/${image.id}`}>
                     <figure className="pt-2">
-                      <Image
-                        src={image.imageUrl}
-                        alt="user generated image"
+                      <img
+                        src={image.imageUrl || undefined}
+                        alt=""
                         width="350"
                         height="350"
                       />

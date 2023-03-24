@@ -68,13 +68,17 @@ export default function ReactionForm(props: Props) {
         {reactions.map((reaction) => (
           <div key={`reaction-${reaction.id}`} className="inline-flex">
             <div>
-              <Link href={`/profile/${reaction.userName}`}>
-                <b>
-                  {reaction.userName.charAt(0).toUpperCase() +
-                    reaction.userName.slice(1)}
-                  :
-                </b>
-              </Link>
+              {reaction.userName ? (
+                <Link href={`/profile/${reaction.userName}`}>
+                  <b>
+                    {reaction.userName.charAt(0).toUpperCase() +
+                      reaction.userName.slice(1)}
+                    :
+                  </b>
+                </Link>
+              ) : (
+                ''
+              )}
             </div>
             {idOnEditMode !== reaction.id ? (
               reaction.content

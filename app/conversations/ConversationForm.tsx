@@ -30,15 +30,19 @@ export default function ConversationForm(props: Props) {
                 : 'self-start'
             } flex chat chat-bubble bg-white text-black m-1`}
           >
-            <div className="chat-header">
-              <a href={`/profile/${conversation.userName}`}>
-                <b>
-                  {conversation.userName.charAt(0).toUpperCase() +
-                    conversation.userName.slice(1)}
-                  :
-                </b>
-              </a>
-            </div>
+            {conversation.userName ? (
+              <div className="chat-header">
+                <a href={`/profile/${conversation.userName}`}>
+                  <b>
+                    {conversation.userName.charAt(0).toUpperCase() +
+                      conversation.userName.slice(1)}
+                    :
+                  </b>
+                </a>
+              </div>
+            ) : (
+              ''
+            )}
             {idOnEditMode !== conversation.id ? (
               conversation.content
             ) : (
