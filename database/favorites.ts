@@ -32,7 +32,9 @@ export const getFavoriteById = cache(async (id: number) => {
 
 export const getFavoriteByUserAndLocation = cache(
   async (userId: number, locationId: number) => {
-    const [favorite] = await sql<Favorite[]>`
+    const [favorite] = await sql<
+      { userId: number | null; locationId: number | null }[]
+    >`
   SELECT
     user_id,
     location_id

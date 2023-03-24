@@ -25,6 +25,8 @@ export const getCommentsForLocationWithUsername = cache(
     comments
   INNER JOIN
     users ON comments.user_id = users.id
+  INNER JOIN
+    locations ON comments.location_id = location.id
   WHERE
     comments.location_id = ${locationId}
   `;

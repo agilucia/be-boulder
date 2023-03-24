@@ -17,7 +17,7 @@ export type ReactionWithUsername = {
 };
 
 export const getReactionForImageWithUsername = cache(
-  async (imageId: number) => {
+  async (imageId: number | null) => {
     const reactionsWithUsername = await sql<ReactionWithUsername[]>`
   SELECT
     *

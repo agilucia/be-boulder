@@ -29,73 +29,73 @@ export const getLocation = cache(async (id: number) => {
   return location;
 });
 
-// creating a new location
-export const createLocation = cache(
-  async (
-    name: string,
-    address: string,
-    website: string,
-    instagram: string,
-    price: string,
-    openingHours: string,
-    description: string,
-    lat: string,
-    lng: string,
-  ) => {
-    const [location] = await sql<Location[]>`
-    INSERT INTO locations
-      (name, address, website, instagram, price, openingHours, description, lat, lng)
-    VALUES
-      (${name}, ${address}, ${website}, ${instagram}, ${price}, ${openingHours}, ${description}, ${lat}, ${lng})
-    RETURNING *
-    `;
-    return location;
-  },
-);
+// // creating a new location
+// export const createLocation = cache(
+//   async (
+//     name: string,
+//     address: string,
+//     website: string,
+//     instagram: string,
+//     price: string,
+//     openingHours: string,
+//     description: string,
+//     lat: string,
+//     lng: string,
+//   ) => {
+//     const [location] = await sql<Location[]>`
+//     INSERT INTO locations
+//       (name, address, website, instagram, price, openingHours, description, lat, lng)
+//     VALUES
+//       (${name}, ${address}, ${website}, ${instagram}, ${price}, ${openingHours}, ${description}, ${lat}, ${lng})
+//     RETURNING *
+//     `;
+//     return location;
+//   },
+// );
 
-// updating a location
-export const updateLocationById = cache(
-  async (
-    id: number,
-    name: string,
-    address: string,
-    website: string,
-    instagram: string,
-    price: string,
-    openingHours: string,
-    description: string,
-    lat: string,
-    lng: string,
-  ) => {
-    const [location] = await sql<Location[]>`
-    UPDATE
-      locations
-    SET
-      name = ${name},
-      address = ${address},
-      website = ${website},
-      instagram = ${instagram},
-      price = ${price},
-      openingHours = ${openingHours},
-      description = ${description},
-      lat = ${lat},
-      lng = ${lng}
-    WHERE
-      id = ${id}
-    RETURNING *
-    `;
-    return location;
-  },
-);
+// // updating a location
+// export const updateLocationById = cache(
+//   async (
+//     id: number,
+//     name: string,
+//     address: string,
+//     website: string,
+//     instagram: string,
+//     price: string,
+//     openingHours: string,
+//     description: string,
+//     lat: string,
+//     lng: string,
+//   ) => {
+//     const [location] = await sql<Location[]>`
+//     UPDATE
+//       locations
+//     SET
+//       name = ${name},
+//       address = ${address},
+//       website = ${website},
+//       instagram = ${instagram},
+//       price = ${price},
+//       openingHours = ${openingHours},
+//       description = ${description},
+//       lat = ${lat},
+//       lng = ${lng}
+//     WHERE
+//       id = ${id}
+//     RETURNING *
+//     `;
+//     return location;
+//   },
+// );
 
-// deleting a product
-export const deleteLocationById = cache(async (id: number) => {
-  const [location] = await sql<Location[]>`
-  DELETE FROM
-    locations
-  WHERE
-    id = ${id}
-  RETURNING *
-  `;
-  return location;
-});
+// // deleting a product
+// export const deleteLocationById = cache(async (id: number) => {
+//   const [location] = await sql<Location[]>`
+//   DELETE FROM
+//     locations
+//   WHERE
+//     id = ${id}
+//   RETURNING *
+//   `;
+//   return location;
+// });
