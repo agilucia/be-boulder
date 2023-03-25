@@ -21,7 +21,7 @@ export default function LocationsMap(props) {
       center={position}
       zoom={7}
       scrollWheelZoom={true}
-      style={{ height: 400, width: 400 }}
+      style={{ height: 350, width: 350 }}
       animate={true}
     >
       <TileLayer

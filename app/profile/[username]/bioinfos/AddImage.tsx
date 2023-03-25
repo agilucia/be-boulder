@@ -70,7 +70,7 @@ export default function AddImage(props: Props) {
 
   return (
     <main className="flex flex-col items-center">
-      <div className="card card-compact w-96 bg-base-100 shadow-xl mb-4">
+      <div className="card card-compact w-80 bg-base-100 shadow-xl mb-4">
         <div className="card-body">
           <h1 className="card-title">Share a special moment!</h1>
           {errors.map((error) => (

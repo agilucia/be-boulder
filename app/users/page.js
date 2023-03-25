@@ -23,7 +23,7 @@ export default async function Users() {
         }}
       >
         <div className="flex flex-col items-center text-black hero-overlay bg-opacity-60">
-          <div className="card w-96 bg-base-100 shadow-xl my-2 items-center pb-4 mt-4 bg-opacity-90">
+          <div className="card w-80 bg-base-100 shadow-xl my-2 items-center pb-4 mt-4 bg-opacity-90">
             <h1 className="text-xl mt-4">
               <b>Get to know other users:</b>
             </h1>

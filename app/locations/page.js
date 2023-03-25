@@ -41,7 +41,7 @@ export default async function Locations() {
               return (
                 <div
                   key={`location-${location.id}`}
-                  className="card w-96 bg-base-100 shadow-xl hover:shadow-primary my-2 bg-opacity-90"
+                  className="card w-80 bg-base-100 shadow-xl hover:shadow-primary my-2 bg-opacity-90"
                 >
                   <Link href={`/locations/${location.id}`}>
                     <div className="card-body items-center text-center">

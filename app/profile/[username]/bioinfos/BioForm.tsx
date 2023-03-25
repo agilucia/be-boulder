@@ -20,7 +20,7 @@ export default function BioForm(props: Props) {
 
   return (
     <main className="flex flex-col items-center">
-      <div className="card card-compact w-96 bg-base-100 shadow-xl mb-6 p-4 inline-flex">
+      <div className="card card-compact w-80 bg-base-100 shadow-xl mb-6 p-4 inline-flex">
         <label htmlFor="bio" className="card-title">
           Add info
         </label>

@@ -55,7 +55,7 @@ export default async function UserFavorites({ params }: Props) {
               return (
                 <div
                   key={`location-${favorite.locationId}`}
-                  className="card w-96 bg-base-100 shadow-xl my-2 items-center"
+                  className="card w-80 bg-base-100 shadow-xl my-2 items-center"
                 >
                   <Link href={`/locations/${favorite.locationId}`}>
                     <figure className="px-10 pt-10">

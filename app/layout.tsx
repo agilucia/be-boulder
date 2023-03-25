@@ -29,7 +29,7 @@ export default async function RootLayout(props: Props) {
   return (
     <html lang="en">
       <head />
-      <body className="mt-6 flex flex-col min-h-screen">
+      <body className="mt-6 flex flex-col min-h-screen bg-white">
         {props.children}
         <div className="btm-nav btm-nav-sm">
           <Link href="/" className="hover:text-primary hover:active">

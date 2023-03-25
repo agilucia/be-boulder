@@ -70,7 +70,7 @@ export default async function UserProfile(props: Props) {
         }}
       >
         <div className="flex flex-col items-center text-black hero-overlay bg-opacity-60">
-          <div className="card w-96 bg-base-100 shadow-xl items-center pb-4 mt-4 bg-opacity-90">
+          <div className="card w-80 bg-base-100 shadow-xl items-center pb-4 mt-4 bg-opacity-90">
             <h1 className="text-2xl text-black mt-4">
               <b>
                 {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
@@ -111,7 +111,7 @@ export default async function UserProfile(props: Props) {
               return (
                 <div
                   key={`user-${image.userId}`}
-                  className="card w-96 bg-base-100 shadow-xl my-2 items-center flex bg-opacity-90"
+                  className="card w-80 bg-base-100 shadow-xl my-2 items-center flex bg-opacity-90"
                 >
                   {' '}
                   <div className="self-end pr-2 pt-2">
@@ -126,8 +126,8 @@ export default async function UserProfile(props: Props) {
                       <img
                         src={image.imageUrl || undefined}
                         alt=""
-                        width="350"
-                        height="350"
+                        width="300"
+                        height="300"
                       />
                     </figure>
                     <div className="card-body items-center text-center text-black -my-4">
