@@ -65,6 +65,9 @@ export default function LoginForm(props: { returnTo?: string | string[] }) {
           />
         </label>
         <button className="btn btn-outline btn-primary">Login</button>
+        <p>
+          Don't have an account yet? <a href="/register">Register here</a>
+        </p>
       </div>
     </form>
   );
