@@ -12,7 +12,7 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
 
   return (
     <form
-      className="card w-96 bg-base-100 shadow-xl bg-opacity-90"
+      className="card w-80 bg-base-100 shadow-xl bg-opacity-90"
       onSubmit={async (event) => {
         event.preventDefault();
 
