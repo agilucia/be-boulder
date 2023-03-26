@@ -73,7 +73,7 @@ export default async function LocationPage(props: Props) {
         }}
       >
         <div className="flex flex-col items-center hero-overlay bg-opacity-60">
-          <div className="card w-80 bg-base-100 shadow-xl my-2 flex bg-opacity-90">
+          <div className="card w-80 bg-base-100 shadow-xl my-2 flex bg-opacity-90 md:w-9/12">
             <div className="card-body -mt-12">
               <div className="self-end ">
                 <AddFavorite
@@ -84,12 +84,12 @@ export default async function LocationPage(props: Props) {
               </div>
               <h1 className="card-title">{singleLocation.name} </h1>
               <figure>
-                <Image
+                <img
                   src={`/images/${singleLocation.id}.jpg`}
                   alt={singleLocation.name}
-                  width="350"
-                  height="350"
-                  className="py-5"
+                  // width="350"
+                  // height="350"
+                  className="py-5 w-80 md:w-4/5"
                 />
               </figure>
 

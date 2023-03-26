@@ -20,7 +20,7 @@ export default function ConversationForm(props: Props) {
 
   return (
     <main>
-      <div className="flex flex-col items-start mt-12">
+      <div className="flex flex-col items-start mt-12 w-screen">
         {conversations.map((conversation) => (
           <div
             key={`conversation-${conversation.id}`}
@@ -28,7 +28,7 @@ export default function ConversationForm(props: Props) {
               conversation.userName === props.userName
                 ? 'self-end'
                 : 'self-start'
-            } flex chat chat-bubble bg-white text-black m-1`}
+            } flex chat chat-bubble bg-white text-black m-1 mx-6`}
           >
             {conversation.userName ? (
               <div className="chat-header">
@@ -146,7 +146,7 @@ export default function ConversationForm(props: Props) {
         ))}
       </div>
 
-      <div className="flex items-center justify-center self-center mt-60">
+      <div className="flex items-center justify-center self-center mt-60 mx-6">
         <input
           value={content}
           placeholder="Send a message"

@@ -29,19 +29,19 @@ export default async function Locations() {
           backgroundImage: `url("/images/climbing_wall.jpg") `,
         }}
       >
-        <div className="flex flex-col items-center hero-overlay bg-opacity-60">
+        <div className="flex flex-col items-center hero-overlay bg-opacity-60 ">
           <h1 className="text-2xl text-white mt-2">
             <b>BE BOULDER</b>
           </h1>
           <div>
             <LocationsMap locations={locations} />
           </div>
-          <span>
+          <span className="flex flex-col md:flex-row md:flex-wrap md:justify-center">
             {locations.map((location) => {
               return (
                 <div
                   key={`location-${location.id}`}
-                  className="card w-80 bg-base-100 shadow-xl hover:shadow-primary my-2 bg-opacity-90"
+                  className="card w-80 bg-base-100 shadow-xl hover:shadow-primary my-2 bg-opacity-90 md:mx-2"
                 >
                   <Link href={`/locations/${location.id}`}>
                     <div className="card-body items-center text-center">
