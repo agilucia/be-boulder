@@ -69,9 +69,9 @@ export default async function UserProfile(props: Props) {
           backgroundImage: `url("/images/climbing_wall.jpg") `,
         }}
       >
-        <div className="flex flex-col items-center text-black hero-overlay bg-opacity-60">
+        <div className="flex flex-col items-center hero-overlay bg-opacity-60">
           <div className="card w-80 bg-base-100 shadow-xl items-center pb-4 mt-4 bg-opacity-90">
-            <h1 className="text-2xl text-black mt-4">
+            <h1 className="text-2xl mt-4">
               <b>
                 {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
               </b>
@@ -130,7 +130,7 @@ export default async function UserProfile(props: Props) {
                         height="300"
                       />
                     </figure>
-                    <div className="card-body items-center text-center text-black -my-4">
+                    <div className="card-body items-center text-center-my-4">
                       <p>{image.caption}</p>
                     </div>
                   </Link>

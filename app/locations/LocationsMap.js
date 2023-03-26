@@ -28,6 +28,7 @@ export default function LocationsMap(props) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright"'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+
       {props.locations.map((location) => (
         <Marker
           key={`location-${location.id}`}
