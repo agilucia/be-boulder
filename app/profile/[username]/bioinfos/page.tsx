@@ -17,7 +17,7 @@ export const metadata = {
   description:
     'Edit the information in your bio and add more pictures to your personal feed.',
   icons: {
-    shortcut: '/icon_3.svg',
+    shortcut: '/favicon.svg',
   },
 };
 

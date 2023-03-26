@@ -8,7 +8,7 @@ export const metadata = {
   description:
     'Discover other users of BE BOULDER and find out more about them by clicking on their profile.',
   icons: {
-    shortcut: '/icon_3.svg',
+    shortcut: '/favicon.svg',
   },
 };
 

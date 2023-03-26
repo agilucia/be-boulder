@@ -29,7 +29,7 @@ export async function generateMetadata(props: Props) {
     title: `BE BOULDER - ${user.username}`,
     description: `Find out about ${user.username} and check out their picture feed`,
     icons: {
-      shortcut: '/icon_3.svg',
+      shortcut: '/favicon.svg',
     },
   };
 }

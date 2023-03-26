@@ -16,7 +16,7 @@ export const metadata = {
   description:
     'Use this lobby to chat with other users and talk about your bouldering habits and experiences.',
   icons: {
-    shortcut: '/icon_3.svg',
+    shortcut: '/favicon.svg',
   },
 };
 

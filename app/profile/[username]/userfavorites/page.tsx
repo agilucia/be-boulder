@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props) {
     title: `BE BOULDER - ${user.username}'s favorites`,
     description: `Discover ${user.username}'s favorite locations`,
     icons: {
-      shortcut: '/icon_3.svg',
+      shortcut: '/favicon.svg',
     },
   };
 }

@@ -5,6 +5,15 @@ import LoginForm from './LoginForm';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  title: 'BE BOULDER - Login',
+  description:
+    'Log in to your account to be able to use all features of BE BOULDER.',
+  icons: {
+    shortcut: '/favicon.svg',
+  },
+};
+
 type Props = { searchParams: { returnTo?: string | string[] } };
 
 export default async function LoginPage(props: Props) {

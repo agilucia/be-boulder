@@ -5,6 +5,15 @@ import RegisterForm from './RegisterForm';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  title: 'BE BOULDER - Register',
+  description:
+    'Create an account to be able to use all features of BE BOULDER.',
+  icons: {
+    shortcut: '/favicon.svg',
+  },
+};
+
 type Props = { searchParams: { returnTo?: string | string[] } };
 
 export default async function RegisterPage(props: Props) {
