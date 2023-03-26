@@ -76,3 +76,11 @@ export const getAllUsers = cache(async () => {
 
   return users;
 });
+
+export type UserWithLocationFavorites = {
+  userId: number;
+  userName: string;
+  favoriteId: number | null;
+  locationId: number | null;
+  locationName: string | null;
+};
