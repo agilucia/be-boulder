@@ -7,7 +7,7 @@ const config: PlaywrightTestConfig = {
     port: 3000,
     reuseExistingServer: !process.env.CI,
   },
-  testIgnore: '**/util/__tests__/**',
+  testIgnore: '**/utils/__tests__/**',
   retries: process.env.CI ? 2 : 0,
   reporter: process.env.CI
     ? 'list'
