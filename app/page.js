@@ -7,7 +7,7 @@ export const metadata = {
   description:
     'Discover bouldering locations in Austria on a map and get the most important informations.',
   icons: {
-    shortcut: '/icon_3.svg',
+    shortcut: '/favicon.svg',
   },
 };
 
