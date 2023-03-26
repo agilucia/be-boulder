@@ -64,7 +64,7 @@ export default function LoginForm(props: { returnTo?: string | string[] }) {
             onChange={(event) => setPassword(event.currentTarget.value)}
           />
         </label>
-        <button className="btn btn-outline btn-primary">Login</button>
+        <button className="btn btn-outline btn-primary">Log in</button>
         <p>
           Don't have an account yet? <a href="/register">Register here</a>
         </p>
