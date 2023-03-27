@@ -20,6 +20,7 @@
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "ley": "^0.8.1",
     "next": "13.2.3",
+    "next-pwa": "^5.6.0",
     "patch-package": "^6.5.1",
     "postcss-styled-syntax": "^0.4.0",
     "postgres": "^3.3.3",

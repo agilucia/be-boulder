@@ -7,6 +7,7 @@ export const metadata = {
   title: {
     default: 'BE BOULDER',
   },
+  manifest: '/manifest.json',
 };
 
 type Props = {
