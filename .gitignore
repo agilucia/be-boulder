@@ -32,6 +32,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
 .eslintcache
 *.tsbuildinfo
 playwright/test-results/
