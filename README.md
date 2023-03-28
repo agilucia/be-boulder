@@ -16,6 +16,8 @@ Enjoy, go climbing, be boulder!
 - PostgreSQL
 - Playwright
 - Jest
+- Cloudinary
+- Leaflet
 
 Languages:
 
