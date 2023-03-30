@@ -13,7 +13,7 @@
     "next-env.d.ts"
   ],
   "compilerOptions": {
-    "jsx": "preserve"
-  },
-  "plugins": [{ "name": "next" }]
+    "jsx": "preserve",
+    "plugins": [{ "name": "next" }]
+  }
 }

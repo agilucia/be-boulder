@@ -16,6 +16,8 @@ Enjoy, go climbing, be boulder!
 - PostgreSQL
 - Playwright
 - Jest
+- Cloudinary
+- Leaflet
 
 Languages:
 
@@ -25,6 +27,22 @@ Languages:
 - TSX
 
 ## Screenshots
+
+### Home & Overview
+
+![Screenshot home & overview](public/screenshots/home.png)
+
+### Single location
+
+![Screenshot single location](public/screenshots/location.png)
+
+### Profile
+
+![Screenshot user profile](public/screenshots/profile.png)
+
+### Users and lobby
+
+![Screenshot users and lobby](public/screenshots/users-lobby.png)
 
 ## Database schema
 
