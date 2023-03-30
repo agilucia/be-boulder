@@ -48,6 +48,8 @@ Languages:
 
 ![Screenshot database schema](public/screenshots/database_schema.png)
 
+- Link to [database schema](https://drawsql.app/teams/agnes-team/diagrams/final-project)
+
 ## Setup instructions
 
 1. Clone the project on your local machine (run each line individually):
