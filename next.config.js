@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const withPWA = require('next-pwa');
+const runtimeCaching = require('next-pwa/cache.js');
 
 const conf = {
   experimental: {
@@ -29,6 +30,7 @@ const nextConfig = withPWA({
   register: true,
   skipWaiting: true,
   // disable: process.env.NODE_ENV === 'development',
+  runtimeCaching,
 })(conf);
 
 module.exports = nextConfig;
