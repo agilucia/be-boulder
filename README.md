@@ -2,7 +2,7 @@
 
 ## Descripton
 
-BE BOULDER is a PWA that aims to give bouldering enthusiasts the most relevant information about bouldering locations in Austria. It also gives users the possibility to connect with each other and posting personal information on their profiles which helps them to build a community.
+BE BOULDER is a PWA that aims to give bouldering enthusiasts the most relevant information about bouldering locations in Austria. It also gives users the possibility to connect with each other and post personal information on their profiles which helps them to build a community.
 
 The app includes authentication with login/register functionality to ensure user data privacy and security. It was built using technologies such as React for front-end and Node.js for back-end development.
 
